@@ -21,7 +21,7 @@ jobs:
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
       - name: Build application
-        run: npm build:next
+        run: npm run build:next
 
       - name: Build docker image
         run: docker build -t ${{ env.DOCKER_TAG }} .
