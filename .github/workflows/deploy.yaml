@@ -19,7 +19,7 @@ jobs:
       - name: Install deps
         run: npm install
       - name: Build application
-        run: npm run build:next
+        run: npm run build
       - uses: docker/login-action@v1
         with:
           registry: ghcr.io
