@@ -6,6 +6,7 @@ WORKDIR /app
 COPY website/package.json .
 COPY website/.next/ .next/
 COPY website/public/ public
+COPY website/pages/ pages
 # COPY .env.local .
 # COPY website/redirects.json .
 # COPY .env.local .
