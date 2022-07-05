@@ -10,7 +10,8 @@ COPY .env.local .
 # COPY website/redirects.json .
 # COPY .env.local .
 # COPY website/next.config.js .
-COPY node_modules node_modules/
+# COPY node_modules node_modules/
+RUN npm install
 
 EXPOSE 3000
 CMD npm start
