@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: nais/deploy/actions/deploy@v1
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          APIKEY: ${{ secrets.NAIS_DEPLOY_API_KEY }}
           CLUSTER: dev-gcp
           RESOURCE: nais.yaml
           VAR: image=${{ env.docker_image }}
