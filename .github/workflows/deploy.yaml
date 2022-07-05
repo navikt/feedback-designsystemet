@@ -9,6 +9,12 @@ env:
 
 jobs:
   build:
+    name: Install deps
+    run: npm install
+#    name: Jest tests
+#    run: npm run test
+    name: Build application
+    run: npm run build
     name: Build and push Docker container
     runs-on: ubuntu-latest
     steps:

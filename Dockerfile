@@ -10,9 +10,7 @@ COPY website/public/ public
 # COPY website/redirects.json .
 # COPY .env.local .
 # COPY website/next.config.js .
-# COPY node_modules node_modules/
-RUN npm install
-RUN npm run build
+COPY website/node_modules/ node_modules/
 
 EXPOSE 3000
 CMD npm start
