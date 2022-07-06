@@ -1,43 +1,52 @@
-name: "Build, push, and deploy"
-"on":
+name: Build, push, and deploy
+
+on:
   push:
-    branches:
-      - dev
+    branches: ["dev"]
+
 env:
-  docker_image: "ghcr.io/${{ github.repository }}:${{ github.sha }}"
+  docker_image: ghcr.io/${{ github.repository }}:${{ github.sha }}
+
 jobs:
+  set_version:
+    name: set image name
+    runs-on: ubuntu-latest
+    steps:
+      - name: create docker tag
+        run: echo "TAG=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
+    outputs:
+      image: ghcr.io/${{ github.repository }}/consumer-group-1:${{ env.TAG }}
+
   build:
     name: Build and push Docker container
     runs-on: ubuntu-latest
+    needs: set_version
     steps:
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - uses: actions/checkout@v2
       - name: Install deps
         run: npm install
       - name: Build application
         run: npm run build
-      - uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: "${{ github.actor }}"
-          password: "${{ secrets.GITHUB_TOKEN }}"
-      - uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: "${{ env.docker_image }}"
+      - name: build docker image
+        run: docker build . --pull -t ${{ needs.set_version.outputs.image }}
+      - name: push docker image
+        run: |
+          docker login --username "$GITHUB_REPOSITORY" -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+          docker push ${{ needs.set_version.outputs.image }}
+
   deploy:
     name: Deploy to NAIS
     needs: build
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - uses: nais/deploy/actions/deploy@v1
         env:
-          APIKEY: "${{ secrets.NAIS_DEPLOY_APIKEY }}"
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: nais.yaml
-          VAR: "image=${{ env.docker_image }}"
+          IMAGE: ${{ needs.set_version.outputs.image }}
