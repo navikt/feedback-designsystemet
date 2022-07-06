@@ -4,7 +4,6 @@
     "dev": "npm run dev --workspace=website",
     "start": "npm start --workspace=website",
     "build": "npm run build --workspace=website",
-    "serve:next": "npm run start --workspace=website",
     "sanity": "npm run start --workspace=sanity",
     "sanity:deploy": "npm run deploy --workspace=sanity",
     "sanity:backup": "npm run backup --workspace=sanity",
