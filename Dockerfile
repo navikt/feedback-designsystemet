@@ -10,5 +10,5 @@ COPY website/ .
 # COPY website/next.config.js .
 COPY node_modules/ node_modules/
 EXPOSE 3000
-RUN npm build
+RUN npm run build
 CMD npm start
