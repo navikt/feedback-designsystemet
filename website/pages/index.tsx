@@ -3,7 +3,7 @@ import { Header } from "@navikt/ds-react-internal";
 import "@navikt/ds-css-internal";
 import "@navikt/ds-css";
 import { ShakeHands } from "@navikt/ds-icons";
-import Card from "../components/Card";
+import CardList from "../components/posts/CardList";
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
         </Header.Title>
         <Header.User name="Feedbacksystemet" />
       </Header>
-      <Card />
+      <CardList />
     </>
   );
 };

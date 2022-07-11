@@ -1,22 +1,22 @@
-import { BodyLong, Button, Heading, Modal } from "@navikt/ds-react";
+import { BodyLong, Button, Heading, LinkPanel, Modal } from "@navikt/ds-react";
 import { useState } from "react";
+import { IPost } from "./CardList";
 
-interface IPost {
-  author: String;
-  title: String;
-  textBody: String;
-  content?: any;
-  publishedAt: Date;
-  votes: Number;
-  state: String;
+interface PostProps {
+  Post: IPost;
 }
 
-const Card = () => {
+const Card: React.FC<PostProps> = (Post) => {
   const [openState, setOpenState] = useState<boolean>(false);
 
   return (
     <>
-      <Button onClick={() => setOpenState(true)}>Åpne Modal</Button>
+      <LinkPanel onClick={() => setOpenState(true)} border>
+        <LinkPanel.Title>{Post.Post.title}</LinkPanel.Title>
+        <LinkPanel.Description>
+          Om jobb, registrering, CV, dagpenger og feriepenger av dagpenger
+        </LinkPanel.Description>
+      </LinkPanel>
       <Modal
         open={openState}
         aria-label="Modal demo"
@@ -24,10 +24,11 @@ const Card = () => {
       >
         <Modal.Content>
           <Heading spacing level="1" size="large">
-            Laborum proident id ullamco
+            {Post.Post.author}
           </Heading>
           <Heading spacing level="2" size="medium">
-            Excepteur labore nostrud incididunt exercitation.
+            {Post.Post.textBody}
+            {Post.Post.votes}
           </Heading>
           <BodyLong spacing>
             Culpa aliquip ut cupidatat laborum minim quis ex in aliqua. Qui
