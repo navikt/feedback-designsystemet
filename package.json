@@ -13,5 +13,9 @@
   "workspaces": [
     "sanity",
     "website"
-  ]
+  ],
+  "dependencies": {
+    "@navikt/ds-css-internal": "^1.0.0-rc.2",
+    "@navikt/ds-react-internal": "^1.0.0-rc.2"
+  }
 }
