@@ -9,9 +9,9 @@ export default function Navigation() {
   const [value, setValue] = useState("forslag");
   const router = useRouter();
 
-  const handleChange = () => {
-    router.push("https://nextjs.org/docs/api-reference/next/router"),
-      (x) => setValue(x);
+  const handleChange = (x) => {
+    router.push("https://nextjs.org/docs/api-reference/next/router");
+    setValue(x);
   };
   return (
     <ToggleGroup onChange={handleChange} value={value} size="medium">
