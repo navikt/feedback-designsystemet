@@ -10,7 +10,7 @@ export default function Navigation() {
   const router = useRouter();
 
   const handleChange = (x) => {
-    router.push("https://nextjs.org/docs/api-reference/next/router");
+    router.push("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     setValue(x);
   };
   return (
