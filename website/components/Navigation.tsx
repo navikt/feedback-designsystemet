@@ -9,12 +9,12 @@ export default function Navigation() {
   const [value, setValue] = useState("forslag");
   const router = useRouter();
 
-  const routeToPage = () => {
+  const handleChange = () => {
     router.push("https://nextjs.org/docs/api-reference/next/router"),
       (x) => setValue(x);
   };
   return (
-    <ToggleGroup onChange={routeToPage} value={value} size="medium">
+    <ToggleGroup onChange={handleChange} value={value} size="medium">
       <ToggleGroup.Item value="forslag">
         <LightBulb aria-hidden />
         Forslag
