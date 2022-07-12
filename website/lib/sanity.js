@@ -1,9 +1,4 @@
-import {
-  createClient,
-  createPortableTextComponent,
-  createImageUrlBuilder,
-  createPreviewSubscriptionHook,
-} from "next-sanity";
+import { createClient } from "next-sanity";
 
 import { config } from "./config";
 
