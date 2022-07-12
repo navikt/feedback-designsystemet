@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "designsystemet-feedback"
+    "name": "designsystemet-feedback",
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "hulzwatj",
@@ -15,9 +16,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [

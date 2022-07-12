@@ -24,11 +24,11 @@ const Card: React.FC<PostProps> = (Post) => {
       >
         <Modal.Content>
           <Heading spacing level="1" size="large">
-            {Post.Post.author}
+            {Post.Post.name}
           </Heading>
           <Heading spacing level="2" size="medium">
-            {Post.Post.textBody}
-            {Post.Post.votes}
+            {Post.Post.title}
+            {Post.Post.title}
           </Heading>
           <BodyLong spacing>
             Culpa aliquip ut cupidatat laborum minim quis ex in aliqua. Qui
