@@ -7,9 +7,12 @@ import { useEffect, useState } from "react";
 export interface IPost {
   name: String;
   title: String;
+  textfield: String;
+  attachments?: any;
+  date: Date;
 }
 
-const CardList: React.FC = () => {
+const CardList: React.FC<IPost[]> = (Post: IPost[]) => {
   const [posts, setPosts] = useState<IPost[]>(null);
 
   useEffect(() => {

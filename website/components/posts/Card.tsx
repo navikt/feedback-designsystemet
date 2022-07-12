@@ -23,7 +23,7 @@ const Card: React.FC<PostProps> = (Post) => {
         onClose={() => setOpenState((x) => !x)}
       >
         <Modal.Content>
-          <Heading spacing level="1" size="large">
+          <Heading className="underline" spacing level="1" size="large">
             {Post.Post.name}
           </Heading>
           <Heading spacing level="2" size="medium">
