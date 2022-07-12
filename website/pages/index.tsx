@@ -6,16 +6,10 @@ import CardList from "../components/posts/CardList";
 import Header from "../components/Heading";
 import Navigation from "../components/Navigation";
 import SortingBox from "../components/SortingBox";
+import Layout from "../components/layout";
 
 const Home = () => {
-  return (
-    <>
-      <Header />
-      <Navigation />
-      <SortingBox />
-      <CardList />
-    </>
-  );
+  return <div />;
 };
 
 export default Home;

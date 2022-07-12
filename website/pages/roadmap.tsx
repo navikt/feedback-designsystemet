@@ -1,3 +1,5 @@
+import Navigation from "../components/Navigation";
+
 export default function Roadmap() {
   return <h1>Roadmap</h1>;
 }

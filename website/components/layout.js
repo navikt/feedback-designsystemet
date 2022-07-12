@@ -1,5 +1,13 @@
 import styles from "./layout.module.css";
+import Heading from "./Heading";
+import Navigation from "./Navigation";
 
 export default function Layout({ children }) {
-  return <div className={styles.container}>{children}</div>;
+  return (
+    <>
+      <Heading />
+      <Navigation />
+      <main>{children}</main>
+    </>
+  );
 }
