@@ -10,8 +10,8 @@ export default function Navigation() {
   const router = useRouter();
 
   const handleChange = (x) => {
-    router.push("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     setValue(x);
+    router.push("/" + x);
   };
   return (
     <ToggleGroup onChange={handleChange} value={value} size="medium">
