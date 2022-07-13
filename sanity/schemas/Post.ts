@@ -29,4 +29,10 @@ export default {
       title: "Date",
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "name",
+    },
+  },
 };

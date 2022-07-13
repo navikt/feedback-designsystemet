@@ -1,38 +1,29 @@
 import Card from "./Card";
+import { groq } from "next-sanity";
+import { useRouter } from "next/router";
+import client from "../../lib/sanity";
+import { useEffect, useState } from "react";
 
 export interface IPost {
-  author: String;
+  name: String;
   title: String;
-  textBody: String;
-  content?: any;
-  publishedAt: Date;
-  votes: Number;
-  state: String;
+  textfield: String;
+  attachments?: any;
+  date: Date;
 }
 
 const CardList: React.FC = () => {
-  const myCards: IPost[] = [
-    {
-      author: "Per",
-      title: "Test",
-      textBody: "Dette er en test",
-      content: null,
-      publishedAt: new Date(),
-      votes: 4,
-      state: "Closed",
-    },
-    {
-      author: "Per",
-      title: "Test",
-      textBody: "Dette er en test",
-      content: null,
-      publishedAt: new Date(),
-      votes: 4,
-      state: "Closed",
-    },
-  ];
+  const [posts, setPosts] = useState<IPost[]>(null);
+
+  useEffect(() => {
+    client
+      .fetch(`*[_type == "post"]`)
+      .then((data) => setPosts(data))
+      .catch(console.error);
+  }, []);
+
   return (
-    <>{myCards ? myCards.map((myCard) => <Card Post={myCard} />) : <></>}</>
+    <>{posts && posts.map((post, index) => <Card key={index} Post={post} />)}</>
   );
 };
 
