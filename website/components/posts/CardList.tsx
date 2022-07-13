@@ -12,7 +12,7 @@ export interface IPost {
   date: Date;
 }
 
-const CardList: React.FC<IPost[]> = (Post: IPost[]) => {
+const CardList: React.FC = () => {
   const [posts, setPosts] = useState<IPost[]>(null);
 
   useEffect(() => {
