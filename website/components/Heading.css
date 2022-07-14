@@ -1,0 +1,24 @@
+.forslag[aria-checked="true"],
+.roadmap[aria-checked="true"] {
+  background-color: white !important;
+}
+
+.navds-label {
+  color: white !important;
+}
+
+.forslag[aria-checked="true"] > .navds-label,
+.roadmap[aria-checked="true"] > .navds-label {
+  color: black !important;
+}
+
+.forslag[aria-checked="false"],
+.roadmap[aria-checked="false"] {
+  background-color: var(--navdsi-header-color-background) !important;
+}
+
+.navds-toggle-group {
+  background-color: var(--navdsi-header-color-background) !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
