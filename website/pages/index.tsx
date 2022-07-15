@@ -1,15 +1,26 @@
-import React from "react";
-import "@navikt/ds-css-internal";
-import "@navikt/ds-css";
-import { ShakeHands } from "@navikt/ds-icons";
-import CardList from "../components/posts/CardList";
-import Header from "../components/Heading";
-import Navigation from "../components/Navigation";
-import SortingBox from "../components/SortingBox";
-import Layout from "../components/layout";
+import client from "../lib/sanity";
 
-const Home = () => {
-  return <div />;
+const Home = ({ posts }) => {
+  return (
+    <>
+      {posts &&
+        posts.map((post, index) => <div key={index}>{post.slug?.current}</div>)}
+    </>
+  );
 };
+
+export async function getStaticProps() {
+  // It's important to default the slug so that it doesn't return "undefined"
+  const posts = await client.fetch(
+    `
+    *[_type == "post"]
+    `
+  );
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default Home;
