@@ -12,7 +12,7 @@ export default function Heading() {
 
   const handleChange = (x) => {
     setValue(x);
-    router.push("/" + x);
+    value == "forslag" ? router.push("/roadmap") : router.push("/");
   };
 
   return (
@@ -24,11 +24,11 @@ export default function Heading() {
         value={value}
         size="medium"
       >
-        <ToggleGroup.Item className="forslag" value="forslag">
+        <ToggleGroup.Item className="fane" value="forslag">
           <LightBulb aria-hidden />
           Forslag
         </ToggleGroup.Item>
-        <ToggleGroup.Item className="roadmap" value="roadmap">
+        <ToggleGroup.Item className="fane" value="roadmap">
           <Braille aria-hidden />
           Roadmap
         </ToggleGroup.Item>

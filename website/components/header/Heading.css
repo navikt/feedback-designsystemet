@@ -1,5 +1,4 @@
-.forslag[aria-checked="true"],
-.roadmap[aria-checked="true"] {
+.fane[aria-checked="true"] {
   background-color: white !important;
 }
 
@@ -7,13 +6,11 @@
   color: white !important;
 }
 
-.forslag[aria-checked="true"] > .navds-label,
-.roadmap[aria-checked="true"] > .navds-label {
+.fane[aria-checked="true"] > .navds-label {
   color: black !important;
 }
 
-.forslag[aria-checked="false"],
-.roadmap[aria-checked="false"] {
+.fane[aria-checked="false"] {
   background-color: var(--navdsi-header-color-background) !important;
 }
 
