@@ -1,4 +1,5 @@
 import { BodyLong, Heading, Panel } from "@navikt/ds-react";
+import Link from "next/link";
 
 export type ISlug = {
   _type: String;
@@ -19,14 +20,14 @@ export type ICard = {
 const Card: React.FC<CardProps> = ({ card }) => {
   console.log(Card);
   return (
-    <>
+    <Link href={`/post/${card.slug.current}`}>
       <Panel border={true}>
         <Heading spacing level="2" size="large">
           {card.name}
         </Heading>
         <BodyLong>{card.textfield}</BodyLong>
       </Panel>
-    </>
+    </Link>
   );
 };
 
