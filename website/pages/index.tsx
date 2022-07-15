@@ -1,11 +1,13 @@
 import client from "../lib/sanity";
+import Card, { ICard } from "../components/Card";
 
-const Home = ({ posts }) => {
+export interface PostProps {
+  posts: ICard[];
+}
+
+const Home: React.FC<PostProps> = ({ posts }) => {
   return (
-    <>
-      {posts &&
-        posts.map((post, index) => <div key={index}>{post.slug?.current}</div>)}
-    </>
+    <>{posts && posts.map((post, index) => <Card key={index} card={post} />)}</>
   );
 };
 
