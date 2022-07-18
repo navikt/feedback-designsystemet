@@ -1,3 +1,4 @@
+import { BodyLong, Heading } from "@navikt/ds-react";
 import client from "../../lib/sanity";
 
 const Post = ({ post }) => {
@@ -9,10 +10,11 @@ const Post = ({ post }) => {
         {" "}
         {"< Tilbake"} {console.log(post)}
       </a>
-      <h1>{title}</h1>
-      <h2>{_updatedAt}</h2>
-      <h2>{textfield}</h2>
-      <h2>{tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}</h2>
+      <h2>{tags && tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}</h2>
+      <Heading size="xlarge" className="content-center">
+        {title}
+      </Heading>
+      <BodyLong size="medium">{textfield}</BodyLong>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import HeaderLogo from "../../public/HeaderLogo";
 
 export default function Heading() {
   const [value, setValue] = useState("forslag");
@@ -17,6 +18,7 @@ export default function Heading() {
 
   return (
     <Header>
+      <HeaderLogo />
       <Header.Title as="h1">Feedback</Header.Title>
       <ToggleGroup
         className="toggleGroup"
