@@ -16,7 +16,7 @@ export type ICard = {
   textfield: String;
   name: String;
   slug: ISlug;
-  tag: string[];
+  tag?: string[];
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
