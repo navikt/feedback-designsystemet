@@ -1,15 +1,18 @@
 import client from "../../lib/sanity";
 
 const Post = ({ post }) => {
-  const { title, name } = post;
+  const { title, name, textfield, _updatedAt, photo, tags } = post;
 
   return (
     <div>
-      <h1>Test Post</h1>
-      <h2>
-        {console.log(post)} :::
-        {title} {name}{" "}
-      </h2>
+      <a className="" href={"/"}>
+        {" "}
+        {"< Tilbake"} {console.log(post)}
+      </a>
+      <h1>{title}</h1>
+      <h2>{_updatedAt}</h2>
+      <h2>{textfield}</h2>
+      <h2>{tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}</h2>
     </div>
   );
 };
@@ -30,7 +33,13 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const post = await client.fetch(
     `
-    *[_type == "post" && slug.current == $slug][0]{name, title}
+    *[_type == "post" && slug.current == $slug][0]{
+      title,
+      name,
+      slug,
+      textfield,
+      "tags": tags[]->title
+    }
     `,
     {
       slug,

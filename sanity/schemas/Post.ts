@@ -37,6 +37,12 @@ export default {
       type: "datetime",
       title: "Date",
     },
+    {
+      title: "Tags",
+      name: "tags",
+      type: "array",
+      of: [{ type: "reference", to: { type: "tag" } }],
+    },
   ],
   preview: {
     select: {
