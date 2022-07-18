@@ -5,20 +5,21 @@ export type ISlug = {
   _type: String;
   current: String;
 };
+
 export interface CardProps {
   card: ICard;
 }
 
 export type ICard = {
-  date: String;
+  _updatedAt: Date;
   title: String;
   textfield: String;
   name: String;
   slug: ISlug;
+  tag: string[];
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  console.log(Card);
   return (
     <div>
       <Link href={`/post/${card.slug.current}`}>
