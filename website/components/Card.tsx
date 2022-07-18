@@ -20,14 +20,16 @@ export type ICard = {
 const Card: React.FC<CardProps> = ({ card }) => {
   console.log(Card);
   return (
-    <Link href={`/post/${card.slug.current}`}>
-      <Panel border={true}>
-        <Heading spacing level="2" size="large">
-          {card.name}
-        </Heading>
-        <BodyLong>{card.textfield}</BodyLong>
-      </Panel>
-    </Link>
+    <div>
+      <Link href={`/post/${card.slug.current}`}>
+        <div className=" h-50 w-50 ease-in-out duration-300 scale-100 hover:scale-125 hover:bg-blue-300 rounded-lg border cursor-pointer m-7 border-black">
+          <Heading className="text-center" spacing level="2" size="large">
+            {card.name}
+          </Heading>
+          <BodyLong>{card.title}</BodyLong>
+        </div>
+      </Link>
+    </div>
   );
 };
 
