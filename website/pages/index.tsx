@@ -7,7 +7,9 @@ export interface PostProps {
 
 const Home: React.FC<PostProps> = ({ posts }) => {
   return (
-    <>{posts && posts.map((post, index) => <Card key={index} card={post} />)}</>
+    <div className="grid grid-cols-3 grid-rows-3 bg-grey-200">
+      {posts && posts.map((post, index) => <Card key={index} card={post} />)}
+    </div>
   );
 };
 
