@@ -1,16 +1,15 @@
-import { Button, ToggleGroup } from "@navikt/ds-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const VotingPanel = () => {
+  //Used later when we implement the voting function
   const [vote, setVote] = useState(null);
-
-  const handleVote = (x) => {
-    setVote(x);
-    vote == "forslag" ? "" : "";
-  };
 
   return (
     <div className="flex flex-row justify-center space-x-20 m-10 text-center">
+      <a className="" href={"/"}>
+        {"< Tilbake"}
+      </a>
+
       <p className="mx-10 my-auto">
         Echo Three to Echo Seven, Han, old buddy, do you read me?
       </p>
@@ -80,23 +79,3 @@ const VotingPanel = () => {
 };
 
 export default VotingPanel;
-
-{
-  /* <div className="flex flex-row justify-center space-x-0 m-10">
-<p className="mx-10">
-  Echo Three to Echo Seven, Han, old buddy, do you read me?
-</p>
-<div className="flex w-full justify-center gap-2 sm:gap-6">
-  <button className="max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none border-gray-900 bg-gray-900 text-text-inverted  focus:border-white focus:shadow-focus">
-    <p className="navds-label">1</p>
-  </button>
-  <button className="max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none border-border bg-white hover:bg-gray-50 focus:shadow-focus">
-    <p className="navds-label">2</p>
-  </button>
-  <button className="max-w-[8rem] flex-1 rounded-sm border-2 py-2 focus:border focus:outline-none border-gray-900 bg-gray-900 text-text-inverted  focus:border-white focus:shadow-focus">
-    <p className="navds-label">3</p>
-  </button>
-</div>
-</div>
- */
-}
