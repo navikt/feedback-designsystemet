@@ -10,8 +10,8 @@ const Post = ({ post }) => {
       <VotingPanel />
       {tags &&
         tags.length > 0 &&
-        tags.map((tag) => (
-          <Tag variant="info" size="medium">
+        tags.map((tag, index) => (
+          <Tag key={index} variant="info" size="medium">
             {tag}
           </Tag>
         ))}
