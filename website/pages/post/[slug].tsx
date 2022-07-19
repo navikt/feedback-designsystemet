@@ -3,7 +3,13 @@ import VotingPanel from "../../components/VotingPanel";
 import client from "../../lib/sanity";
 
 const Post = ({ post }) => {
-  const { title, name, textfield, _updatedAt, photo, tags } = post;
+  const {
+    title = "missing title",
+    name = "missing name",
+    textfield = "missing description",
+    photo = null,
+    tags = null,
+  } = post;
 
   return (
     <div>
@@ -32,7 +38,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
 
