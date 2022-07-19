@@ -17,9 +17,9 @@ jobs:
           node-version: "16"
       - uses: actions/checkout@v3
       - name: Install deps
-        run: npm ci
+        run: yarn
       - name: Build application
-        run: npm run build
+        run: yarn build
       - uses: docker/login-action@v1
         with:
           registry: ghcr.io

@@ -27,7 +27,6 @@ const Card: React.FC<CardProps> = ({ card }) => {
           <Heading className="text-center" spacing level="2" size="large">
             {card.title}
           </Heading>
-          {console.log(card)}
           <BodyLong>{card.tag ? card.tag[0] : ""}</BodyLong>
         </div>
       </Link>
