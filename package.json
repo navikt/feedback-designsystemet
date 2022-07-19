@@ -1,14 +1,15 @@
 {
   "name": "feedback-designsystem",
+  "private": true,
   "scripts": {
-    "dev": "npm run dev --workspace=website",
-    "start": "npm start --workspace=website",
-    "build": "npm run build --workspace=website",
-    "lint": "npm run lint --workspace=website",
-    "sanity": "npm run start --workspace=sanity",
-    "sanity:deploy": "npm run deploy --workspace=sanity",
-    "sanity:backup": "npm run backup --workspace=sanity",
-    "sanity:update": "npm run update:sanity --workspace=website"
+    "dev": "yarn workspace website dev",
+    "start": "yarn workspace website start",
+    "build": "yarn workspace website build",
+    "lint": "yarn workspace website lint",
+    "sanity": "yarn workspace sanity start",
+    "sanity:deploy": "yarn workspace sanity deploy",
+    "sanity:backup": "yarn workspace sanity backup",
+    "sanity:update": "yarn workspace sanity update:sanity"
   },
   "workspaces": [
     "sanity",

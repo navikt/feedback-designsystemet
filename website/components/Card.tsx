@@ -23,13 +23,14 @@ const Card: React.FC<CardProps> = ({ card }) => {
   return (
     <div>
       <Link href={`/post/${card.slug.current}`}>
-        <div className="ease-in-out duration-300 scale-100 hover:scale-105 hover:bg-feedback-info-background rounded-lg border cursor-pointer m-2 border-border">
+        {/*         <div className="ease-in-out duration-300 scale-100 hover:scale-105 hover:bg-feedback-info-background rounded-lg border cursor-pointer m-2 border-border">
           <Heading className="text-center" spacing level="2" size="large">
             {card.title}
           </Heading>
           {console.log(card)}
           <BodyLong>{card.tag ? card.tag[0] : ""}</BodyLong>
         </div>
+ */}{" "}
       </Link>
     </div>
   );
