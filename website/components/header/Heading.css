@@ -1,0 +1,21 @@
+.fane[aria-checked="true"] {
+  background-color: #ffffff !important;
+}
+
+.navds-label {
+  color: white !important;
+}
+
+.fane[aria-checked="true"] > .navds-label {
+  color: black !important;
+}
+
+.fane[aria-checked="false"] {
+  background-color: var(--navdsi-header-color-background) !important;
+}
+
+.navds-toggle-group {
+  background-color: var(--navdsi-header-color-background) !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}

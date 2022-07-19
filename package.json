@@ -1,16 +1,24 @@
 {
   "name": "feedback-designsystem",
+  "private": true,
   "scripts": {
-    "dev": "npm run dev --workspace=website",
-    "build:next": "npm run build --workspace=website",
-    "serve:next": "npm run start --workspace=website",
-    "sanity": "npm run start --workspace=sanity",
-    "sanity:deploy": "npm run deploy --workspace=sanity",
-    "sanity:backup": "npm run backup --workspace=sanity",
-    "sanity:update": "npm run update:sanity --workspace=website"
+    "dev": "yarn workspace website dev",
+    "start": "yarn workspace website start",
+    "build": "yarn workspace website build",
+    "lint": "yarn workspace website lint",
+    "sanity": "yarn workspace sanity start",
+    "sanity:deploy": "yarn workspace sanity deploy",
+    "sanity:backup": "yarn workspace sanity backup",
+    "sanity:update": "yarn workspace sanity update:sanity"
   },
   "workspaces": [
     "sanity",
     "website"
-  ]
+  ],
+  "dependencies": {
+    "@navikt/ds-css-internal": "^1.0.0-rc.2",
+    "@navikt/ds-react-internal": "^1.0.0-rc.2",
+    "@navikt/ds-tailwind": "^1.0.0-rc.2",
+    "groq": "^2.29.3"
+  }
 }

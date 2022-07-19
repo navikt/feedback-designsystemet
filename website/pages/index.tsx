@@ -1,21 +1,30 @@
-import React from "react";
-import { Header } from "@navikt/ds-react-internal";
-import "@navikt/ds-css-internal";
-import "@navikt/ds-css";
-import { ShakeHands } from "@navikt/ds-icons";
+import client from "../lib/sanity";
+import Card, { ICard } from "../components/Card";
 
-const Home = () => {
+export interface PostProps {
+  posts: ICard[];
+}
+
+const Home: React.FC<PostProps> = ({ posts }) => {
   return (
-    <>
-      <Header>
-        <Header.Title>
-          <ShakeHands />
-          Aksel
-        </Header.Title>
-        <Header.User name="Feedbacksystemet" />
-      </Header>
-    </>
+    <div className="grid sm:grid-cols-2 md:grid-cols-3">
+      {posts && posts.map((post, index) => <Card key={index} card={post} />)}
+    </div>
   );
 };
+
+export async function getStaticProps() {
+  // It's important to default the slug so that it doesn't return "undefined"
+  const posts = await client.fetch(
+    `
+    *[_type == "post"]
+    `
+  );
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default Home;

@@ -1,0 +1,45 @@
+name: Build, push, and deploy
+
+on:
+  push:
+    branches: ["dev"]
+
+env:
+  docker_image: ghcr.io/${{ github.repository }}:${{ github.sha }}
+
+jobs:
+  build:
+    name: Build and push Docker container
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - uses: actions/checkout@v3
+      - name: Install deps
+        run: yarn
+      - name: Build application
+        run: yarn build
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ env.docker_image }}
+  deploy:
+    name: Deploy to NAIS
+    needs: build
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: nais.yaml
+          IMAGE: ${{ env.docker_image }}
