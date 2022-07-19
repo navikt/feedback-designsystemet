@@ -66,7 +66,7 @@ const VotingPanel = () => {
             className="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-yellow-500 peer-checked:ring-2 peer-checked:border-transparent"
             htmlFor="answer_maybe"
           >
-            Siuuuuuu
+            Siuuu
           </label>
 
           <div className="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">
