@@ -1,4 +1,4 @@
-import { BodyLong, Heading, Panel } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import Link from "next/link";
 
 export type ISlug = {
@@ -11,23 +11,27 @@ export interface CardProps {
 }
 
 export type ICard = {
-  _updatedAt: Date;
+  _updatedAt: String;
   title: String;
   textfield: String;
   name: String;
   slug: ISlug;
-  tag?: string[];
+  tags?: string[];
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
+  const { title, _updatedAt, tags } = card;
   return (
     <div>
       <Link href={`/post/${card.slug.current}`}>
         <div className="ease-in-out duration-300 hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle rounded-lg border cursor-pointer m-2 border-border">
           <Heading className="text-center" spacing level="2" size="large">
-            {card.title}
+            {title}
           </Heading>
-          <BodyLong>{card.tag ? card.tag[0] : ""}</BodyLong>
+          <h2>
+            Tags: {tags && tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}
+          </h2>
+          <p>Publisert: {_updatedAt.slice(0, 10)}</p>
         </div>
       </Link>
     </div>
