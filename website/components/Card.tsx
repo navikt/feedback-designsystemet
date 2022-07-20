@@ -22,33 +22,32 @@ export type ICard = {
 const Card: React.FC<CardProps> = ({ card }) => {
   const { title, _updatedAt, tags, textfield } = card;
   return (
-    <div>
-      <Link href={`/post/${card.slug.current}`}>
-        <div
-          className="flex flex-col p-2 md:h-60 h-40 ease-in-out duration-300 hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle 
+    <Link href={`/post/${card.slug.current}`}>
+      <a
+        tabIndex={0}
+        className="flex flex-col p-2 md:h-60 h-40 ease-in-out duration-300 hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle 
         rounded-lg border cursor-pointer m-2 border-border"
-        >
-          <Heading className="text-center" spacing level="2" size="medium">
-            {title}
-          </Heading>
-          <BodyShort className="pl-2 line-clamp-4"> {textfield} </BodyShort>
-          <div className="mt-auto flex justify-between">
-            <BodyShort className="px-2 pt-1" size="small">
-              Publisert: {_updatedAt.slice(0, 10)}
-            </BodyShort>
-            <div className="space-x-1">
-              {tags &&
-                tags.length > 0 &&
-                tags.map((tag, index) => (
-                  <Tag key="index" variant="info" size="small">
-                    #{tag}
-                  </Tag>
-                ))}
-            </div>
+      >
+        <Heading className="text-center" spacing level="2" size="medium">
+          {title}
+        </Heading>
+        <BodyShort className="px-2 line-clamp-4"> {textfield} </BodyShort>
+        <div className="mt-auto flex justify-between">
+          <BodyShort className="px-2 pt-1" size="small">
+            Publisert: {_updatedAt.slice(0, 10)}
+          </BodyShort>
+          <div className="space-x-1">
+            {tags &&
+              tags.length > 0 &&
+              tags.map((tag, index) => (
+                <Tag key="index" variant="info" size="small">
+                  #{tag}
+                </Tag>
+              ))}
           </div>
         </div>
-      </Link>
-    </div>
+      </a>
+    </Link>
   );
 };
 
