@@ -1,4 +1,4 @@
-import { Heading } from "@navikt/ds-react";
+import { BodyShort, Heading, Tag } from "@navikt/ds-react";
 import Link from "next/link";
 
 export type ISlug = {
@@ -28,13 +28,15 @@ const Card: React.FC<CardProps> = ({ card }) => {
           className="h-40 ease-in-out duration-300 hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle 
         rounded-lg border cursor-pointer m-2 border-border"
         >
-          <Heading className="text-center" spacing level="2" size="large">
+          <Heading className="text-center" spacing level="2" size="medium">
             {title}
           </Heading>
-          <h2>
-            Tags: {tags && tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}
-          </h2>
-          <p>Publisert: {_updatedAt.slice(0, 10)}</p>
+          <Tag variant="info" size="small">
+            {tags && tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}
+          </Tag>
+          <BodyShort size="small">
+            Publisert: {_updatedAt.slice(0, 10)}
+          </BodyShort>
         </div>
       </Link>
     </div>
