@@ -29,7 +29,10 @@ const Card: React.FC<CardProps> = ({ card }) => {
             {title}
           </Heading>
           <h2>
-            Tags: {tags && tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}
+            Tags:{" "}
+            {tags &&
+              tags.length > 0 &&
+              tags.map((tag) => <p key={tags.indexOf(tag)}>{tag}</p>)}
           </h2>
           <p>Publisert: {_updatedAt.slice(0, 10)}</p>
         </div>
