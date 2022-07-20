@@ -1,20 +1,32 @@
-import { BodyLong, Heading } from "@navikt/ds-react";
-import client from "../../lib/sanity";
+import { BodyLong, Heading, Tag } from "@navikt/ds-react";
+import VotingPanel from "../../components/VotingPanel";
+import client from "../../lib/sanity/sanity";
 
 const Post = ({ post }) => {
-  const { title, name, textfield, _updatedAt, photo, tags } = post;
+  const {
+    title = "missing title",
+    name = "missing name",
+    textfield = "missing description",
+    photo = null,
+    tags = null,
+  } = post;
 
   return (
     <div>
-      <a className="" href={"/"}>
-        {" "}
-        {"< Tilbake"} {console.log(post)}
-      </a>
-      <h2>{tags && tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}</h2>
-      <Heading size="xlarge" className="content-center">
+      <VotingPanel />
+      {tags &&
+        tags.length > 0 &&
+        tags.map((tag, index) => (
+          <Tag key={index} variant="info" size="medium">
+            {tag}
+          </Tag>
+        ))}
+      <Heading size="xlarge" className="text-center pb-20">
         {title}
       </Heading>
-      <BodyLong size="medium">{textfield}</BodyLong>
+      <BodyLong className="text-center px-60" size="medium">
+        {textfield}
+      </BodyLong>
     </div>
   );
 };
@@ -26,7 +38,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
 
