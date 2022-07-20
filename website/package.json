@@ -17,6 +17,7 @@
     "@sanity/cli": "^2.30.2",
     "@sanity/client": "^3.3.2",
     "autoprefixer": "^10.4.7",
+    "jose": "^4.8.3",
     "next": "latest",
     "next-sanity": "^0.6.0",
     "postcss": "^8.4.14",
