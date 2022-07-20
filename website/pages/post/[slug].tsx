@@ -1,6 +1,6 @@
 import { BodyLong, Heading, Tag } from "@navikt/ds-react";
 import VotingPanel from "../../components/VotingPanel";
-import client from "../../lib/sanity";
+import client from "../../lib/sanity/sanity";
 
 const Post = ({ post }) => {
   const {

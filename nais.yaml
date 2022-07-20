@@ -24,4 +24,11 @@ spec:
     path: /api/isAlive
     initialDelay: 20
     timeout: 1
-    
+  azure:
+    application:
+      enabled: true
+      allowAllUsers: true
+      tenant: nav.no
+    sidecar:
+      enabled: true
+  

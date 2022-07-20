@@ -5,6 +5,8 @@ const VotingPanel = () => {
   //Used later when we implement the voting function
   const [vote, setVote] = useState(null);
 
+  const [voteMessage, setVoteMessage] = useState<boolean>(false);
+
   return (
     <div className="flex flex-row justify-center space-x-20 m-10 text-center">
       <a className="" href={"/"}>
@@ -18,6 +20,7 @@ const VotingPanel = () => {
             <input
               className="sr-only peer"
               type="radio"
+              onClick={() => setVoteMessage(true)}
               value="yes"
               name="answer"
               id="answer_yes"
@@ -41,6 +44,7 @@ const VotingPanel = () => {
             <input
               className="sr-only peer"
               type="radio"
+              onClick={() => setVoteMessage(true)}
               value="no"
               name="answer"
               id="answer_no"
@@ -64,6 +68,7 @@ const VotingPanel = () => {
             <input
               className="sr-only peer"
               type="radio"
+              onClick={() => setVoteMessage(true)}
               value="maybe"
               name="answer"
               id="answer_maybe"
@@ -82,6 +87,7 @@ const VotingPanel = () => {
           </div> */}
           </li>
         </Tooltip>
+        {voteMessage && <div>Stemme registrert ✅</div>}
       </ul>
     </div>
   );

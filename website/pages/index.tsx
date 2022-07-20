@@ -1,4 +1,4 @@
-import client from "../lib/sanity";
+import client from "../lib/sanity/sanity";
 import Card, { ICard } from "../components/Card";
 
 export interface PostProps {

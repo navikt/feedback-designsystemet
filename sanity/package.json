@@ -1,8 +1,7 @@
 {
-  "name": "designsystemet-feedback",
+  "name": "sanity",
   "private": true,
   "version": "1.0.0",
-  "description": "",
   "main": "package.json",
   "author": "Per Håvard Skogli Holte <per.havard.skogli.holte@nav.no>",
   "license": "UNLICENSED",
