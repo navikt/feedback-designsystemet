@@ -1,6 +1,5 @@
-import { BodyLong, Heading, Panel } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import Link from "next/link";
-import client from "../lib/sanity";
 
 export type ISlug = {
   _type: String;
@@ -29,7 +28,6 @@ const Card: React.FC<CardProps> = ({ card }) => {
           <Heading className="text-center" spacing level="2" size="large">
             {title}
           </Heading>
-          {console.log(card)}
           <h2>
             Tags: {tags && tags.length > 0 && tags.map((tag) => <p>{tag}</p>)}
           </h2>
