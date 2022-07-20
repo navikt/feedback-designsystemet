@@ -16,6 +16,7 @@
     "@navikt/ds-react-internal": "^1.0.0-rc.2",
     "@sanity/cli": "^2.30.2",
     "@sanity/client": "^3.3.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "autoprefixer": "^10.4.7",
     "jose": "^4.8.3",
     "next": "latest",
@@ -26,6 +27,7 @@
     "tailwindcss": "^3.1.6"
   },
   "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
     "eslint": "8.19.0",

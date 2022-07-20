@@ -19,6 +19,7 @@
     "@navikt/ds-css-internal": "^1.0.0-rc.2",
     "@navikt/ds-react-internal": "^1.0.0-rc.2",
     "@navikt/ds-tailwind": "^1.0.0-rc.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "groq": "^2.29.3"
   }
 }
