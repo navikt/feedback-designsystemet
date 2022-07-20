@@ -3,6 +3,7 @@ import "@navikt/ds-css-internal";
 import { Braille, LightBulb } from "@navikt/ds-icons";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import HeaderLogo from "../../public/HeaderLogo";
@@ -18,8 +19,12 @@ export default function Heading() {
 
   return (
     <Header>
-      <HeaderLogo />
-      <Header.Title as="h1">Feedback</Header.Title>
+      <Link href={"/"}>
+        <div className="cursor-pointer flex flex-row">
+          <HeaderLogo />
+          <Header.Title as="h1">Feedback</Header.Title>
+        </div>
+      </Link>
       <ToggleGroup
         className="toggleGroup"
         onChange={handleChange}
