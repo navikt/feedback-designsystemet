@@ -17,7 +17,12 @@ export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
   const posts = await client.fetch(
     `
-    *[_type == "post"]
+    *[_type == "post"] {
+      title,
+      _updatedAt,
+      slug,
+      "tags":tags[]->title
+    }
     `
   );
   return {
