@@ -7,7 +7,7 @@ export interface PostProps {
 }
 
 const Home: React.FC<PostProps> = ({ posts }) => {
-  return <CardList posts={posts} />;
+  return <CardList posts={posts} category="" />;
 };
 
 export async function getStaticProps() {
