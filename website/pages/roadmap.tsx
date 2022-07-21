@@ -8,9 +8,10 @@ const Roadmap: React.FC<PostProps> = ({ posts }) => {
   return (
     <div>
       <h1>Roadmap</h1>
-      <Divider name="New Released" />
-      <CardList posts={posts} />
-      <Divider name="Hooga booga" />
+      <Divider name="In Progress" />
+      <CardList posts={posts} category="In Progress" />
+      <Divider name="Done" />
+      <CardList posts={posts} category="Done" />
     </div>
   );
 };
@@ -24,7 +25,8 @@ export async function getStaticProps() {
       textfield,
       _updatedAt,
       slug,
-      "tags":tags[]->title
+      "tags":tags[]->title,
+      "state":state->title
     }
     `
   );

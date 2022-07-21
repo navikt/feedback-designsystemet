@@ -17,6 +17,7 @@ export type ICard = {
   name: String;
   slug: ISlug;
   tags?: string[];
+  state: String;
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
@@ -44,7 +45,7 @@ const Card: React.FC<CardProps> = ({ card }) => {
             {tags &&
               tags.length > 0 &&
               tags.map((tag, index) => (
-                <Tag key="index" variant="info" size="small">
+                <Tag key={index} variant="info" size="small">
                   #{tag}
                 </Tag>
               ))}
