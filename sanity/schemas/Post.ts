@@ -38,11 +38,11 @@ export default {
       title: "Date",
     },
     {
-      title: "Tags",
-      name: "tags",
-      type: "array",
-      of: [{ type: "reference", to: { type: "tag" } }],
-    },
+      title: "State",
+      name: "state",
+      type: "reference",
+      to: [{ type: "category" }],
+    }
   ],
   preview: {
     select: {
