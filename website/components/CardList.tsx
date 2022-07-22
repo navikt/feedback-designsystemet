@@ -9,7 +9,7 @@ export interface PostProps {
 const CardList: React.FC<PostProps> = ({ posts, category }) => {
   console.log(posts);
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid justify-center md:grid-cols-2 lg:grid-cols-3 ">
       {posts && category
         ? posts
             .filter((post) => post.state == category)
