@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@navikt/ds-react";
 import HeaderLogo from "../public/HeaderLogo";
 
+
 export default function MyApp({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
