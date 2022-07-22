@@ -17,7 +17,7 @@ let remoteJWKSet: GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
 export const makeRemoteJWKSet = () => {
   const jwksUrl = new URL(jwksUri);
   remoteJWKSet = createRemoteJWKSet(jwksUrl);
-};  
+};
 
 export const tokenIsValid = async (
   accessToken: string
