@@ -27,8 +27,8 @@ spec:
   azure:
     application:
       enabled: true
-      allowAllUsers: true
       tenant: nav.no
     sidecar:
+      autoLogin: true
       enabled: true
   
