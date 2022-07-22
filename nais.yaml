@@ -27,12 +27,8 @@ spec:
   azure:
     application:
       enabled: true
-      claims:
-        extra:
-          - "NAVident"
-      allowAllUsers: true
-      singlePageApplication: true
       tenant: nav.no
     sidecar:
+      autoLogin: true
       enabled: true
   
