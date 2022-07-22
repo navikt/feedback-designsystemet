@@ -7,7 +7,6 @@ export interface PostProps {
 }
 
 const CardList: React.FC<PostProps> = ({ posts, category }) => {
-  console.log(posts);
   return (
     <div className="grid justify-center md:grid-cols-2 lg:grid-cols-3 ">
       {posts && category
