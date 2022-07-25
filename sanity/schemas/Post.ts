@@ -20,10 +20,10 @@ export default {
       },
     },
     {
-      name: "textfield",
+      name: "description",
       type: "string",
-      title: "Textfield",
-      validation: Rule => Rule.max(50).warning('Prøv å hold tittelen kort.')
+      title: "Description",
+      validation: Rule => Rule.required().min(50).warning('Prøv å beskriv innholdet på kortet grunndigere.')
     },
     {
       name: "attachments",

@@ -16,7 +16,7 @@ export async function getStaticProps() {
     `
     *[_type == "post"] {
       title,
-      textfield,
+      description,
       _updatedAt,
       slug,
       "tags":tags[]->title
