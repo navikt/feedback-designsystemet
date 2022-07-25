@@ -8,6 +8,7 @@ export default async (
   res: NextApiResponse
 ): Promise<void> => {
   const payload = await isValidatedApi(req);
+  console.log("Payload 2: " + payload);
 
   const user = payload
     ? { name: payload?.name, mail: payload?.preferred_username }
