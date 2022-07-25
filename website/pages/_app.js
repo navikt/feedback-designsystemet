@@ -5,6 +5,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { Button } from "@navikt/ds-react";
 import HeaderLogo from "../public/HeaderLogo";
+import { AuthProvider } from "../lib/auth/authprovider";
 
 export default function MyApp({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -16,8 +17,10 @@ export default function MyApp({ Component, pageProps }) {
         <meta property="og:title" content="Feedbacksystemet - Aksel" />
         <meta property="og:image" content="/public/favicon.ico" />
       </Head>
-      <Heading />
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Heading />
+        <Component {...pageProps} />
+      </AuthProvider>
     </div>
   );
 }
