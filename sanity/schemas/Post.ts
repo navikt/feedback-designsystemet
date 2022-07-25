@@ -1,14 +1,15 @@
+import State from "./State";
+
 export default {
   name: "post",
   type: "document",
   title: "Post",
   fields: [
     {
-      name: "name",
+      name: "title",
       type: "string",
-      title: "Name",
-    },
-    {
+      title: "Title",
+    },{
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -18,14 +19,10 @@ export default {
       },
     },
     {
-      name: "title",
-      type: "string",
-      title: "Title",
-    },
-    {
       name: "textfield",
       type: "string",
       title: "Textfield",
+      validation: Rule => Rule.max(50).warning('Prøv å hold tittelen kort.')
     },
     {
       name: "attachments",
@@ -42,16 +39,21 @@ export default {
       name: "state",
       type: "reference",
       to: [{ type: "state" }],
+      validation: Rule => Rule.required().error("Det må settes en State.")
      },
       {
         title: "Tags",
         name: "tags",
         type: "array",
         of: [{ type: "reference", to: { type: "tag" } }],
+        validation: Rule => Rule.required().warning("Det bør velges minst en tag.")
       },
     
 
   ],
+  initialValue: {
+    date: (new Date()).toISOString()
+  },
   preview: {
     select: {
       title: "title",
