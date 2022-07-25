@@ -9,6 +9,7 @@ export default {
       name: "title",
       type: "string",
       title: "Title",
+      validation: Rule => Rule.required().error("Det må settes en tittel.")
     },{
       name: "slug",
       title: "Slug",
