@@ -15,7 +15,9 @@ const jwksUri = serverRuntimeConfig.azureJwksUri;
 let remoteJWKSet: GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
 
 export const makeRemoteJWKSet = () => {
+  console.log("URI: " + jwksUri);
   const jwksUrl = new URL(jwksUri);
+
   remoteJWKSet = createRemoteJWKSet(jwksUrl);
 };
 
