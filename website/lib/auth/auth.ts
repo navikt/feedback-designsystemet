@@ -35,7 +35,7 @@ export const isValidated = async (context: GetServerSidePropsContext) => {
 
 export const isValidatedApi = async (req: NextApiRequest) => {
   if (req == null) {
-    throw new Error("No request given, this should not happend");
+    throw new Error("No request given, this should not happen");
   }
 
   const bearerToken = getBearerToken(req);

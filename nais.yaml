@@ -27,6 +27,9 @@ spec:
   azure:
     application:
       enabled: true
+      claims:
+        extra:
+          - NAVident
       tenant: nav.no
     sidecar:
       autoLogin: true

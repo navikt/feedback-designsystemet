@@ -19,12 +19,10 @@ export default function Heading() {
 
   return (
     <Header>
-      <Link href={"/"}>
-        <div className="ml-3 cursor-pointer flex flex-row">
-          <HeaderLogo />
-          <Header.Title as="h1">Feedback</Header.Title>
-        </div>
-      </Link>
+      <div className="ml-3 flex flex-row">
+        <HeaderLogo />
+        <Header.Title as="h1">Feedback</Header.Title>
+      </div>
       <ToggleGroup
         className="toggleGroup"
         onChange={handleChange}
