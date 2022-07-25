@@ -40,7 +40,8 @@ export const tokenIsValid = async (
     } else if (error instanceof errors.JWTClaimValidationFailed) {
       feilmelding = `Token mottatt har ugyldig claim ${error.claim}`;
     } else {
-      console.log("Error: " + error);
+      console.log("Payload før error: " + accessToken);
+      console.log("Error-melding: " + error);
       feilmelding = "Token er ugyldig";
     }
     return Promise.reject(new Error(feilmelding));
