@@ -20,10 +20,11 @@ export default {
       },
     },
     {
-      name: "textfield",
+      name: "description",
       type: "array",
-      title: "Textfield",
-      of: [{type: "block"}]
+      title: "Description",
+      of: [{type: "block"}],
+      validation: Rule => Rule.required().min(50).warning('Prøv å beskriv innholdet på kortet grunndigere.')
     },
     {
       name: "attachments",

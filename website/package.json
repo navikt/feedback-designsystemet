@@ -17,6 +17,7 @@
     "@portabletext/react": "^1.0.6",
     "@sanity/cli": "^2.30.2",
     "@sanity/client": "^3.3.2",
+    "@sanity/ui": "^0.37.12",
     "@tailwindcss/line-clamp": "^0.4.0",
     "autoprefixer": "^10.4.7",
     "jose": "4.8.0",
@@ -25,6 +26,7 @@
     "postcss": "^8.4.14",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "styled-components": "^5.3.5",
     "tailwindcss": "latest"
   },
   "devDependencies": {

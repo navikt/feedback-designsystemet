@@ -15,7 +15,7 @@ const Post = ({ post }) => {
   const {
     title = "missing title",
     name = "missing name",
-    textfield = [],
+    description = ["missing description"],
     photo = null,
     tags = null,
   } = post;
@@ -36,7 +36,7 @@ const Post = ({ post }) => {
       <Heading size="xlarge" spacing>
         {title}
       </Heading>
-      <PortableText value={textfield} />
+      <PortableText value={description} />
     </div>
   );
 };
@@ -61,7 +61,7 @@ export async function getStaticProps(context) {
       title,
       name,
       slug,
-      textfield,
+      description,
       "tags": tags[]->title
     }
     `,

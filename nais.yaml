@@ -32,6 +32,6 @@ spec:
           - NAVident
       tenant: nav.no
     sidecar:
-      autoLogin: true
       enabled: true
+      autoLogin: true
   
