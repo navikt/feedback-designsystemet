@@ -9,22 +9,36 @@ export default {
       name: "title",
       type: "string",
       title: "Title",
-      validation: Rule => Rule.required().error("Det må settes en tittel.")
-    },{
+      validation: Rule => [
+        Rule.required().error("Det må settes en tittel."),
+        Rule.max(30).warning("Hold tittelen kort og konsis."),
+      ]
+    },
+    {
       name: "slug",
       title: "Slug",
       type: "slug",
+      validation: Rule => Rule.required().error("Det må settes en slug. Du kan bruke Generate knappen."),
       options: {
         source: "title",
         maxLength: 96,
       },
     },
     {
+      name: "shortdescription",
+      type: "string",
+      title: "Short description",
+      validation: Rule => [
+        Rule.required().error('Det må settes en kort beskrivelse.'),
+        Rule.min(50).warning("Prøv å hold beskrivelsen kort, men gi nok informasjon til at brukerne fortstår hva kortet omhandler.")
+      ]
+    },
+    {
       name: "description",
       type: "array",
       title: "Description",
       of: [{type: "block"}],
-      validation: Rule => Rule.required().min(50).warning('Prøv å beskriv innholdet på kortet grunndigere.')
+      validation: Rule => Rule.required().min(50).warning('Her bør det gis en utdypende beskrivelse.')
     },
     {
       name: "attachments",
