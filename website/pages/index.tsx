@@ -1,5 +1,5 @@
 import client from "../lib/sanity/sanity";
-import Card, { ICard } from "../components/Card";
+import { ICard } from "../components/Card";
 import CardList from "../components/CardList";
 import SortingBox from "../components/SortingBox";
 import { Tag } from "@navikt/ds-react";
