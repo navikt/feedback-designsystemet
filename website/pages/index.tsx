@@ -1,5 +1,5 @@
 import client from "../lib/sanity/sanity";
-import Card, { ICard } from "../components/Card";
+import { ICard } from "../components/Card";
 import CardList from "../components/CardList";
 
 export interface PostProps {
@@ -7,7 +7,7 @@ export interface PostProps {
 }
 
 const Home: React.FC<PostProps> = ({ posts }) => {
-  return <CardList posts={posts} category="" />;
+  return <CardList posts={posts} />;
 };
 
 export async function getStaticProps() {
