@@ -1,32 +1,42 @@
 import { BodyLong, Heading, Tag } from "@navikt/ds-react";
 import VotingPanel from "../../components/VotingPanel";
 import client from "../../lib/sanity/sanity";
+import { PortableText } from "@portabletext/react";
+
+interface post {
+  title: String;
+  name: String;
+  textfield: any;
+  photo?: any;
+  tags?: Array<string>;
+}
 
 const Post = ({ post }) => {
   const {
     title = "missing title",
     name = "missing name",
-    textfield = "missing description",
+    textfield = [],
     photo = null,
     tags = null,
   } = post;
 
   return (
-    <div>
-      <VotingPanel />
-      {tags &&
-        tags.length > 0 &&
-        tags.map((tag, index) => (
-          <Tag key={index} variant="info" size="medium">
-            {tag}
-          </Tag>
-        ))}
-      <Heading size="xlarge" className="text-center pb-20">
+    <div className="flex flex-col mx-auto pt-10">
+      <p>hei</p>
+      <a href={"/"}>{"< Tilbake"}</a>
+      <div className="pt-10 pb-4 space-x-1">
+        {tags &&
+          tags.length > 0 &&
+          tags.map((tag, index) => (
+            <Tag key={index} variant="info" size="medium">
+              {tag}
+            </Tag>
+          ))}
+      </div>
+      <Heading size="xlarge" spacing>
         {title}
       </Heading>
-      <BodyLong className="text-center px-60" size="medium">
-        {textfield}
-      </BodyLong>
+      <PortableText value={textfield} />
     </div>
   );
 };

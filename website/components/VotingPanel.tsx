@@ -9,10 +9,6 @@ const VotingPanel = () => {
 
   return (
     <div className="flex flex-row justify-center space-x-20 m-10 text-center">
-      <a className="" href={"/"}>
-        {"< Tilbake"}
-      </a>
-
       <p className="mx-10 my-auto">Hvor viktig er denne endringen for deg?</p>
       <ul className="grid grid-cols-3 gap-x-5 m-10 max-w-md mx-auto">
         <Tooltip content="Dette ville vært nyttig" placement="bottom">

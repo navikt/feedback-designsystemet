@@ -21,9 +21,9 @@ export default {
     },
     {
       name: "textfield",
-      type: "string",
+      type: "array",
       title: "Textfield",
-      validation: Rule => Rule.max(50).warning('Prøv å hold tittelen kort.')
+      of: [{type: "block"}]
     },
     {
       name: "attachments",
@@ -34,6 +34,9 @@ export default {
       name: "date",
       type: "datetime",
       title: "Date",
+      options: {
+        dateFormat: 'DD-MM-YYYY',
+      }
     },
     {
       title: "State",

@@ -13,7 +13,7 @@ export interface CardProps {
 export type ICard = {
   _updatedAt: String;
   title: String;
-  textfield: String;
+  textfield: Array<string>;
   name: String;
   slug: ISlug;
   tags?: string[];
@@ -28,18 +28,19 @@ const Card: React.FC<CardProps> = ({ card }) => {
         tabIndex={0}
         className="flex flex-col text-text p-2 md:h-60 h-40 max-w-md ease-in-out duration-300 
         hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle 
-        shadow shadow-card rounded-lg cursor-pointer m-2"
+        shadow shadow-card border border-border rounded-lg cursor-pointer m-2"
       >
         <Heading className="text-center" spacing level="2" size="medium">
           {title}
         </Heading>
-        <BodyShort className="text-center px-2 line-clamp-4">
+        {/*         <BodyShort className="text-center px-2 line-clamp-4">
           {" "}
           {textfield}{" "}
         </BodyShort>
+ */}{" "}
         <div className="mt-auto flex justify-between">
           <BodyShort className="px-2 pt-1 italic" size="small">
-            Publisert: {_updatedAt.slice(0, 10)}
+            Publisert: {_updatedAt.slice(0, 10).split("-").reverse().join(".")}
           </BodyShort>
           <div className="space-x-1">
             {tags &&
