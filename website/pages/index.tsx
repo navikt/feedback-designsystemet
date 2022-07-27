@@ -1,11 +1,11 @@
 import client from "../lib/sanity/sanity";
 import { ICard } from "../components/Card";
 import CardList from "../components/CardList";
-import SortingBox from "../components/SortingBox";
-import { Tag } from "@navikt/ds-react";
+import { Accordion, Checkbox, CheckboxGroup, Select } from "@navikt/ds-react";
+import { useState } from "react";
 
 export interface PostProps {
-  posts: ICard[];
+  posts?: ICard[];
   tags?: Tag[];
 }
 
@@ -14,10 +14,39 @@ export interface Tag {
 }
 
 const Home: React.FC<PostProps> = ({ posts, tags }) => {
+  const [filters, setFilters] = useState<string[]>(null);
+
   return (
     <>
-      <CardList posts={posts} category="" />
-      <SortingBox tags={tags} />
+      <Accordion>
+        <Accordion.Item>
+          <Accordion.Header>Filtrering</Accordion.Header>
+          <Accordion.Content>
+            <CheckboxGroup
+              legend="Velg status:"
+              onChange={(v) => {
+                setFilters(v), console.log(filters);
+              }}
+              size="small"
+            >
+              {tags &&
+                tags.map((tag, index) => (
+                  <Checkbox key={index} value={tag.title}>
+                    {tag.title}
+                  </Checkbox>
+                ))}
+            </CheckboxGroup>
+
+            <Select label="Velg kategori:" size="medium">
+              <option value="">Velg kategori</option>
+              <option value="komponent">Komponent</option>
+              <option value="figma">Figma</option>
+            </Select>
+          </Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
+
+      <CardList posts={posts} filters={filters} />
     </>
   );
 };
