@@ -1,12 +1,12 @@
 import { BodyLong, Heading, Tag } from "@navikt/ds-react";
 import VotingPanel from "../../components/VotingPanel";
 import client from "../../lib/sanity/sanity";
-import { PortableText } from "@portabletext/react";
+import { PortableText, PortableTextBlockComponent } from "@portabletext/react";
 
 interface post {
   title: String;
   name: String;
-  textfield: any;
+  textfield: PortableTextBlockComponent;
   photo?: any;
   tags?: Array<string>;
 }
