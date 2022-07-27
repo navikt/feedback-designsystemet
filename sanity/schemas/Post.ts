@@ -41,9 +41,27 @@ export default {
       validation: Rule => Rule.required().min(50).warning('Her bør det gis en utdypende beskrivelse.')
     },
     {
-      name: "image",
-      type: "image",
-      title: "Image",
+      name: "images",
+      type: "array",
+      title: "Images",
+      of: [
+        {
+          name: "image",
+          type: "image",
+          title: "Image",
+        fields: [
+          {
+            name: "alt",
+            type: "string",
+            title: "Alternative text",
+          },
+        ],
+      },
+      ],
+      options: {
+        layout: "grid",
+      }
+      
     },
     {
       name: "date",
@@ -60,13 +78,13 @@ export default {
       to: [{ type: "state" }],
       validation: Rule => Rule.required().error("Det må settes en State.")
      },
-      {
-        title: "Tags",
-        name: "tags",
-        type: "array",
-        of: [{ type: "reference", to: { type: "tag" } }],
-        validation: Rule => Rule.required().warning("Det bør velges minst en tag.")
-      },
+    {
+      title: "Tags",
+      name: "tags",
+      type: "array",
+      of: [{ type: "reference", to: { type: "tag" } }],
+      validation: Rule => Rule.required().warning("Det bør velges minst en tag.")
+    },
     
 
   ],

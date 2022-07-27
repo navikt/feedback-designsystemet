@@ -4,12 +4,13 @@ import client from "../../lib/sanity/sanity";
 import { PortableText, PortableTextBlockComponent } from "@portabletext/react";
 import { useNextSanityImage } from "next-sanity-image";
 import Img from "next/image";
+import imageUrlBuilder from "@sanity/image-url";
 
 interface post {
   title: String;
   name: String;
   textfield: PortableTextBlockComponent;
-  image?: any;
+  images?: any;
   tags?: Array<string>;
 }
 
@@ -18,14 +19,17 @@ const Post = ({ post }) => {
     title = "missing title",
     name = "missing name",
     description = ["missing description"],
-    image = null,
+    images = null,
     tags = null,
   } = post;
 
-  const imageProps = useNextSanityImage(client, image);
+  const builder = imageUrlBuilder(client);
+  function urlFor(source) {
+    return builder.image(source);
+  }
 
   return (
-    <div className="flex flex-col mx-auto pt-10">
+    <div className="flex flex-col mx-auto max-w-2xl pt-10">
       <a href={"/"}>{"< Tilbake"}</a>
       <div className="pt-10 pb-4 space-x-1">
         {tags &&
@@ -40,11 +44,17 @@ const Post = ({ post }) => {
         {title}
       </Heading>
       <PortableText value={description} />
-      <Img
-        {...imageProps}
-        layout="responsive"
-        sizes="(max-width: 1000px) 10vw, 1000px"
-      />
+      <div className="grid sm:grid-cols-2 gap-2 pt-10 mx-auto">
+        {images &&
+          images.length > 0 &&
+          images.map((image) => (
+            <img
+              src={urlFor(image).width(300).url()}
+              alt={image.alt}
+              className="rounded drop-shadow-md"
+            />
+          ))}
+      </div>
     </div>
   );
 };
@@ -69,7 +79,7 @@ export async function getStaticProps(context) {
       title,
       name,
       slug,
-      image,
+      images,
       description,
       "tags": tags[]->title
     }
