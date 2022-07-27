@@ -41,9 +41,9 @@ export default {
       validation: Rule => Rule.required().min(50).warning('Her bør det gis en utdypende beskrivelse.')
     },
     {
-      name: "attachments",
-      type: "file",
-      title: "Attachments",
+      name: "image",
+      type: "image",
+      title: "Image",
     },
     {
       name: "date",
