@@ -16,8 +16,8 @@ export default {
     },
     {
       name: "slug",
-      title: "Slug",
       type: "slug",
+      title: "Slug",
       validation: Rule => Rule.required().error("Det må settes en slug. Du kan bruke Generate knappen."),
       options: {
         source: "title",
@@ -54,9 +54,9 @@ export default {
       }
     },
     {
-      title: "State",
       name: "state",
       type: "reference",
+      title: "State",
       to: [{ type: "state" }],
       validation: Rule => Rule.required().error("Det må settes en State.")
      },
