@@ -24,9 +24,7 @@ const Home: React.FC<PostProps> = ({ posts, tags }) => {
           <Accordion.Content>
             <CheckboxGroup
               legend="Velg status:"
-              onChange={(v) => {
-                setFilters(v), console.log(filters);
-              }}
+              onChange={(v) => setFilters(v)}
               size="small"
             >
               {tags &&

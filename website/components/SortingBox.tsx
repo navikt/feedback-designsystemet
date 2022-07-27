@@ -1,31 +1,40 @@
-import { Checkbox, CheckboxGroup, Search, Select } from "@navikt/ds-react";
+import { Accordion, Checkbox, CheckboxGroup, Select } from "@navikt/ds-react";
+import { PostProps, Tag } from "../pages/index";
 
 /* import Layout from "../components/layout"; */
 
-const SortingBox = ({ tags }) => {
-  console.log(tags);
+interface SortingProps {
+  tags: Tag[]
+}
+
+const SortingBox: React.FC<SortingProps> = ({ tags }) => {
   const handleChange = (val: any[]) => {};
   return (
-    <div>
-      <CheckboxGroup
-        legend="Velg status:"
-        onChange={(val: any[]) => handleChange(val)}
-        size="medium"
-      >
-        {tags &&
-          tags.map((tag, index) => (
-            <Checkbox key={index} value={tag.title}>
-              {tag.title}
-            </Checkbox>
-          ))}
-      </CheckboxGroup>
+    <Accordion>
+      <Accordion.Item>
+        <Accordion.Header>Filtrering</Accordion.Header>
+        <Accordion.Content>
+          <CheckboxGroup
+            legend="Velg status:"
+            onChange={(val: any[]) => handleChange(val)}
+            size="small"
+          >
+            {tags &&
+              tags.map((tag, index) => (
+                <Checkbox key={index} value={tag.title}>
+                  {tag.title}
+                </Checkbox>
+              ))}
+          </CheckboxGroup>
 
-      <Select label="Velg kategori:" size="medium">
-        <option value="">Velg kategori</option>
-        <option value="komponent">Komponent</option>
-        <option value="figma">Figma</option>
-      </Select>
-    </div>
+          <Select label="Velg kategori:" size="medium">
+            <option value="">Velg kategori</option>
+            <option value="komponent">Komponent</option>
+            <option value="figma">Figma</option>
+          </Select>
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
   );
 };
 

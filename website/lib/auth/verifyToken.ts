@@ -15,7 +15,6 @@ const jwksUri = serverRuntimeConfig.azureJwksUri;
 let remoteJWKSet: GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
 
 export const makeRemoteJWKSet = () => {
-  console.log("URI: " + jwksUri);
   const jwksUrl = new URL(jwksUri);
 
   remoteJWKSet = createRemoteJWKSet(jwksUrl);
@@ -42,7 +41,6 @@ export const tokenIsValid = async (
     } else if (error instanceof errors.JWTClaimValidationFailed) {
       feilmelding = `Token mottatt har ugyldig claim ${error.claim}`;
     } else {
-      console.log("Error-melding: " + error);
       feilmelding = "Token er ugyldig";
     }
     return Promise.reject(new Error(feilmelding));
