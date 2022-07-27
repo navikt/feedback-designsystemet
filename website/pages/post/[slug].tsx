@@ -1,10 +1,8 @@
-import { BodyLong, Heading, Tag } from "@navikt/ds-react";
-import VotingPanel from "../../components/VotingPanel";
+import { Heading, Tag } from "@navikt/ds-react";
 import client from "../../lib/sanity/sanity";
 import { PortableText, PortableTextBlockComponent } from "@portabletext/react";
-import { useNextSanityImage } from "next-sanity-image";
-import Img from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
+import Image from "next/image";
 
 interface post {
   title: String;
@@ -47,8 +45,9 @@ const Post = ({ post }) => {
       <div className="grid sm:grid-cols-2 gap-2 pt-10 mx-auto">
         {images &&
           images.length > 0 &&
-          images.map((image) => (
-            <img
+          images.map((image, key) => (
+            <Image
+              key={key}
               src={urlFor(image).width(300).url()}
               alt={image.alt}
               className="rounded drop-shadow-md"
