@@ -22,4 +22,7 @@ module.exports = {
     azureAppJWK: process.env.AZURE_APP_JWK,
   },
   rewrites: () => [STUDIO_REWRITE],
+  images: {
+    domains: ["cdn.sanity.io"],
+  },
 };
