@@ -1,15 +1,51 @@
-import client from "../lib/sanity";
-import Card, { ICard } from "../components/Card";
+import client from "../lib/sanity/sanity";
+import { ICard } from "../components/Card";
+import CardList from "../components/CardList";
+import { Accordion, Checkbox, CheckboxGroup, Select } from "@navikt/ds-react";
+import { useState } from "react";
 
 export interface PostProps {
-  posts: ICard[];
+  posts?: ICard[];
+  tags?: Tag[];
 }
 
-const Home: React.FC<PostProps> = ({ posts }) => {
+export interface Tag {
+  title: String;
+}
+
+const Home: React.FC<PostProps> = ({ posts, tags }) => {
+  const [filters, setFilters] = useState<string[]>(null);
+
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3">
-      {posts && posts.map((post, index) => <Card key={index} card={post} />)}
-    </div>
+    <>
+      <Accordion>
+        <Accordion.Item>
+          <Accordion.Header>Filtrering</Accordion.Header>
+          <Accordion.Content>
+            <CheckboxGroup
+              legend="Velg status:"
+              onChange={(v) => setFilters(v)}
+              size="small"
+            >
+              {tags &&
+                tags.map((tag, index) => (
+                  <Checkbox key={index} value={tag.title}>
+                    {tag.title}
+                  </Checkbox>
+                ))}
+            </CheckboxGroup>
+
+            <Select label="Velg kategori:" size="medium">
+              <option value="">Velg kategori</option>
+              <option value="komponent">Komponent</option>
+              <option value="figma">Figma</option>
+            </Select>
+          </Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
+
+      <CardList posts={posts} filters={filters} />
+    </>
   );
 };
 
@@ -17,12 +53,26 @@ export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
   const posts = await client.fetch(
     `
-    *[_type == "post"]
+    *[_type == "post"] {
+      title,
+      description,
+      _updatedAt,
+      slug,
+      "tags":tags[]->title
+    }
+    `
+  );
+  const tags = await client.fetch(
+    `
+    *[_type == "tag"] {
+      title
+    }
     `
   );
   return {
     props: {
       posts,
+      tags,
     },
   };
 }

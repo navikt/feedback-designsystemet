@@ -1,30 +1,41 @@
-import { Checkbox, CheckboxGroup, Search, Select } from "@navikt/ds-react";
+import { Accordion, Checkbox, CheckboxGroup, Select } from "@navikt/ds-react";
+import { PostProps, Tag } from "../pages/index";
 
 /* import Layout from "../components/layout"; */
 
-export default function SortingBox() {
+interface SortingProps {
+  tags: Tag[]
+}
+
+const SortingBox: React.FC<SortingProps> = ({ tags }) => {
   const handleChange = (val: any[]) => {};
   return (
-    <div>
-      {/*       <Layout> */}
-      <Search label="Sorter resultatene" size="medium" variant="simple" />
+    <Accordion>
+      <Accordion.Item>
+        <Accordion.Header>Filtrering</Accordion.Header>
+        <Accordion.Content>
+          <CheckboxGroup
+            legend="Velg status:"
+            onChange={(val: any[]) => handleChange(val)}
+            size="small"
+          >
+            {tags &&
+              tags.map((tag, index) => (
+                <Checkbox key={index} value={tag.title}>
+                  {tag.title}
+                </Checkbox>
+              ))}
+          </CheckboxGroup>
 
-      <CheckboxGroup
-        legend="Velg status:"
-        onChange={(val: any[]) => handleChange(val)}
-        size="medium"
-      >
-        <Checkbox value="Under utbedring">Under utbedring</Checkbox>
-        <Checkbox value="Planlagt">Planlagt</Checkbox>
-        <Checkbox value="Ferdig">Ferdig</Checkbox>
-      </CheckboxGroup>
-
-      <Select label="Velg kategori:" size="medium">
-        <option value="">Velg kategori</option>
-        <option value="komponent">Komponent</option>
-        <option value="figma">Figma</option>
-      </Select>
-      {/*       </Layout> */}
-    </div>
+          <Select label="Velg kategori:" size="medium">
+            <option value="">Velg kategori</option>
+            <option value="komponent">Komponent</option>
+            <option value="figma">Figma</option>
+          </Select>
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
   );
-}
+};
+
+export default SortingBox;
