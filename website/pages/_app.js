@@ -13,20 +13,20 @@ export default function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={studioTheme}>
-        <div className="flex flex-col mx-auto justify-center">
-          <Head>
-            <title>Feedbacksystemet - Aksel</title>
-            <meta property="og:title" content="Feedbacksystemet - Aksel" />
-            <meta property="og:image" content="/public/favicon.ico" />
-          </Head>
-          <AuthProvider>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={studioTheme}>
+          <div className="flex flex-col mx-auto justify-center">
+            <Head>
+              <title>Feedbacksystemet - Aksel</title>
+              <meta property="og:title" content="Feedbacksystemet - Aksel" />
+              <meta property="og:image" content="/public/favicon.ico" />
+            </Head>
             <Heading />
             <Component {...pageProps} />
-          </AuthProvider>
-        </div>
-      </ThemeProvider>
-    </QueryClientProvider>
+          </div>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </AuthProvider>
   );
 }
