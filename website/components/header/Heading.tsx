@@ -1,6 +1,6 @@
 import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
-import { Braille, LightBulb } from "@navikt/ds-icons";
+import { Braille, EmployerFilled, LightBulb } from "@navikt/ds-icons";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
 import { useRouter } from "next/router";
@@ -31,8 +31,8 @@ const Heading: React.FC = () => {
       } else {
         setUser({
           status: 200,
-          name: "Feil Feilesen",
-          mail: "feil@nav.no",
+          name: "Lokalesen, Lokal",
+          mail: "lokal@nav.no",
           ident: "H12456",
         });
       }
@@ -40,7 +40,7 @@ const Heading: React.FC = () => {
   }, []);
 
   return (
-    <Header>
+    <Header className="flex justify-between">
       <div className="ml-3 flex flex-row">
         <HeaderLogo />
         <Header.Title as="h1">Feedback</Header.Title>
@@ -60,8 +60,7 @@ const Heading: React.FC = () => {
           Roadmap
         </ToggleGroup.Item>
       </ToggleGroup>
-      <>{console.log(user == undefined ? "ikke her" : user.name)}</>
-      <p>{"User: " + user?.name + ": " + user?.status}</p>
+      <Header.User name={user?.name.split(",")[0]} />
     </Header>
   );
 };
