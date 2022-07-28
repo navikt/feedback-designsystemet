@@ -42,17 +42,15 @@ const Post = ({ post }) => {
         {title}
       </Heading>
       <PortableText value={description} />
-      <div className="grid sm:grid-cols-2 gap-2 pt-10 mx-auto">
+      <div className="grid sm:grid-cols-2 gap-3 pt-10 mx-auto">
         {images &&
           images.length > 0 &&
           images.map((image, key) => (
-            <Image
+            <img
               key={key}
               src={urlFor(image).url()}
-              width="300"
-              height="300"
               alt={image.alt}
-              className="rounded drop-shadow-md"
+              className="container rounded drop-shadow-md"
             />
           ))}
       </div>
