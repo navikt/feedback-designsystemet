@@ -3,12 +3,22 @@ import "@navikt/ds-css-internal";
 import { Braille, LightBulb } from "@navikt/ds-icons";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
+import { data } from "autoprefixer";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { userAgent } from "next/server";
 import { useState } from "react";
+import { isValidated, isValidatedApi } from "../../lib/auth/auth";
+import useUser from "../../lib/hooks/fetchUser";
 import HeaderLogo from "../../public/HeaderLogo";
 
-export default function Heading() {
+export interface IData {
+  status: number;
+  name: string;
+  email: string;
+  ident: string;
+}
+const Heading: React.FC<IData> = (user) => {
   const [value, setValue] = useState("forslag");
   const router = useRouter();
 
@@ -38,6 +48,19 @@ export default function Heading() {
           Roadmap
         </ToggleGroup.Item>
       </ToggleGroup>
+      <p>
+        {"User: " + user.name} {console.log(user)}
+      </p>
     </Header>
   );
+};
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const user = await fetch(`/api/auth`);
+
+  // Pass data to the page via props
+  return { props: { user } };
 }
+
+export default Heading;

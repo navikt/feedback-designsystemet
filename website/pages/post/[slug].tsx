@@ -48,7 +48,9 @@ const Post = ({ post }) => {
           images.map((image, key) => (
             <Image
               key={key}
-              src={urlFor(image).width(300).url()}
+              src={urlFor(image).url()}
+              width="300"
+              height="300"
               alt={image.alt}
               className="rounded drop-shadow-md"
             />
