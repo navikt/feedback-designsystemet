@@ -3,10 +3,8 @@ import "@navikt/ds-css-internal";
 import { Braille, LightBulb } from "@navikt/ds-icons";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
-import { QueryClient, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useUser } from "../../lib/hooks/fetchUser";
 import HeaderLogo from "../../public/HeaderLogo";
 
 export interface IData {
@@ -53,8 +51,10 @@ const Heading: React.FC<IData> = (user) => {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const user = await fetch("https://feedbacksystem.dev.intern.nav.no/api/auth");
-
+  const userInfo = await fetch(
+    "https://feedbacksystem.dev.intern.nav.no/api/auth"
+  );
+  const user = userInfo.json();
   return { props: { user } };
 }
 
