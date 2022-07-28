@@ -44,9 +44,7 @@ const Heading: React.FC<IData> = (user) => {
           Roadmap
         </ToggleGroup.Item>
       </ToggleGroup>
-      <p>
-        {"User: " + user.name} {console.log(user)}
-      </p>
+      <p>{"User: " + user.name}</p>
     </Header>
   );
 };
@@ -54,7 +52,7 @@ const Heading: React.FC<IData> = (user) => {
 export async function getServerSideProps() {
   // Fetch data from external API
   const user = await fetch(`/api/auth`);
-
+  console.log("User: " + user);
   // Pass data to the page via props
   return { props: { user } };
 }
