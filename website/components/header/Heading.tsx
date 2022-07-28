@@ -23,7 +23,7 @@ const Heading: React.FC = () => {
     value == "forslag" ? router.push("/roadmap") : router.push("/");
   };
 
-  const fetchUser = useCallback(() => {
+  useEffect(() => {
     fetch(`/api/auth`).then(async (res) => {
       const json = await res.json();
       if (json?.status === 200) {
@@ -37,10 +37,6 @@ const Heading: React.FC = () => {
         });
       }
     });
-  }, []);
-
-  useEffect(() => {
-    fetchUser();
   }, []);
 
   return (
