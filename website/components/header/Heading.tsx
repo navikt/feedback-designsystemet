@@ -3,13 +3,9 @@ import "@navikt/ds-css-internal";
 import { Braille, LightBulb } from "@navikt/ds-icons";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
-import { data } from "autoprefixer";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { userAgent } from "next/server";
 import { useState } from "react";
 import { isValidated, isValidatedApi } from "../../lib/auth/auth";
-import useUser from "../../lib/hooks/fetchUser";
 import HeaderLogo from "../../public/HeaderLogo";
 
 export interface IData {
