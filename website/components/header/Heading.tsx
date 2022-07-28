@@ -3,9 +3,10 @@ import "@navikt/ds-css-internal";
 import { Braille, LightBulb } from "@navikt/ds-icons";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
+import { QueryClient, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { isValidated, isValidatedApi } from "../../lib/auth/auth";
+import { useUser } from "../../lib/hooks/fetchUser";
 import HeaderLogo from "../../public/HeaderLogo";
 
 export interface IData {
@@ -44,6 +45,7 @@ const Heading: React.FC<IData> = (user) => {
           Roadmap
         </ToggleGroup.Item>
       </ToggleGroup>
+      <>{console.log(user)}</>
       <p>{"User: " + user.name + ": " + user.status}</p>
     </Header>
   );
@@ -51,9 +53,8 @@ const Heading: React.FC<IData> = (user) => {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const user = await fetch("/api/auth");
-  console.log("User: " + user);
-  // Pass data to the page via props
+  const user = await fetch("https://feedbacksystem.dev.intern.nav.no/api/auth");
+
   return { props: { user } };
 }
 
