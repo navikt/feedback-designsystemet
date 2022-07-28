@@ -51,7 +51,7 @@ const Heading: React.FC<IPerson> = (user) => {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const user = await fetch(`/api/auth`).then(async (res) => {
+  const user = fetch(`/api/auth`).then(async (res) => {
     const json = await res.json();
     if (json?.status === 200) {
       return json;
