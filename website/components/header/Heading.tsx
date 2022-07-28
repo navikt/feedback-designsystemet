@@ -11,8 +11,8 @@ import HeaderLogo from "../../public/HeaderLogo";
 export interface IData {
   status: number;
   name: string;
-  email: string;
-  ident: string;
+  email?: string;
+  ident?: string;
 }
 const Heading: React.FC<IData> = (user) => {
   const [value, setValue] = useState("forslag");
@@ -44,14 +44,14 @@ const Heading: React.FC<IData> = (user) => {
           Roadmap
         </ToggleGroup.Item>
       </ToggleGroup>
-      <p>{"User: " + user.name}</p>
+      <p>{"User: " + user.name + ": " + user.status}</p>
     </Header>
   );
 };
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const user = await fetch(`/api/auth`);
+  const user = await fetch("/api/auth");
   console.log("User: " + user);
   // Pass data to the page via props
   return { props: { user } };

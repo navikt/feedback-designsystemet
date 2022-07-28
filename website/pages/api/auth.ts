@@ -14,7 +14,7 @@ export default async (
         mail: payload?.preferred_username,
         ident: payload?.NAVident,
       }
-    : {};
+    : { name: "not found" };
 
   res.status(200).json({
     status: payload ? 200 : 401,
