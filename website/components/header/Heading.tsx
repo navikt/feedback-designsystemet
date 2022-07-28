@@ -4,7 +4,7 @@ import { Braille, LightBulb } from "@navikt/ds-icons";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
 import { useRouter } from "next/router";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import HeaderLogo from "../../public/HeaderLogo";
 
 export interface IPerson {
@@ -13,14 +13,35 @@ export interface IPerson {
   mail?: string;
   ident?: string;
 }
-const Heading: React.FC<IPerson> = (user) => {
+const Heading: React.FC = () => {
   const [value, setValue] = useState("forslag");
   const router = useRouter();
+  const [user, setUser] = useState<IPerson>(null);
 
   const handleChange = (x) => {
     setValue(x);
     value == "forslag" ? router.push("/roadmap") : router.push("/");
   };
+
+  const fetchUser = useCallback(() => {
+    fetch(`/api/auth`).then(async (res) => {
+      const json = await res.json();
+      if (json?.status === 200) {
+        setUser(json);
+      } else {
+        setUser({
+          status: 200,
+          name: "Feil Feilesen",
+          mail: "feil@nav.no",
+          ident: "H12456",
+        });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <Header>
@@ -43,29 +64,10 @@ const Heading: React.FC<IPerson> = (user) => {
           Roadmap
         </ToggleGroup.Item>
       </ToggleGroup>
-      <>{console.log(user == undefined ? user.name : "ikke her")}</>
-      <p>{"User: " + user.name + ": " + user.status}</p>
+      <>{console.log(user == undefined ? "ikke her" : user.name)}</>
+      <p>{"User: " + user?.name + ": " + user?.status}</p>
     </Header>
   );
 };
-
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const user = fetch(`/api/auth`).then(async (res) => {
-    const json = await res.json();
-    if (json?.status === 200) {
-      return json;
-    } else {
-      return {
-        status: 200,
-        name: "Feil Feilesen",
-        mail: "feil@nav.no",
-        ident: "H12456",
-      };
-    }
-  });
-
-  return { props: { user } };
-}
 
 export default Heading;
