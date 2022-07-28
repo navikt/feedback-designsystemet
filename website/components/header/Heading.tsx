@@ -10,7 +10,7 @@ import HeaderLogo from "../../public/HeaderLogo";
 export interface IData {
   status: number;
   name: string;
-  email?: string;
+  mail?: string;
   ident?: string;
 }
 const Heading: React.FC<IData> = (user) => {
@@ -43,7 +43,7 @@ const Heading: React.FC<IData> = (user) => {
           Roadmap
         </ToggleGroup.Item>
       </ToggleGroup>
-      <>{console.log(user ? user : "ikke her")}</>
+      <>{console.log(user == undefined ? user.name : "ikke her")}</>
       <p>{"User: " + user.name + ": " + user.status}</p>
     </Header>
   );
@@ -51,9 +51,10 @@ const Heading: React.FC<IData> = (user) => {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const user = await fetch(
-    "https://feedbacksystem.dev.intern.nav.no/api/auth"
-  ).then((res) => res.json());
+  const user = await fetch("/api/auth").then((res) => {
+    console.log(res);
+    res.json();
+  });
 
   return { props: { user } };
 }
