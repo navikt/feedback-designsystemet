@@ -1,8 +1,15 @@
 import client from "../lib/sanity/sanity";
 import { ICard } from "../components/Card";
 import CardList from "../components/CardList";
-import { Accordion, Checkbox, CheckboxGroup, Select } from "@navikt/ds-react";
+import {
+  Accordion,
+  BodyShort,
+  Checkbox,
+  CheckboxGroup,
+  Select,
+} from "@navikt/ds-react";
 import { useState } from "react";
+import Divider from "../components/Divider";
 
 export interface PostProps {
   posts?: ICard[];
@@ -18,7 +25,7 @@ const Home: React.FC<PostProps> = ({ posts, tags }) => {
 
   return (
     <>
-      <Accordion>
+      {/* <Accordion>
         <Accordion.Item>
           <Accordion.Header>Filtrering</Accordion.Header>
           <Accordion.Content>
@@ -42,8 +49,11 @@ const Home: React.FC<PostProps> = ({ posts, tags }) => {
             </Select>
           </Accordion.Content>
         </Accordion.Item>
-      </Accordion>
-
+      </Accordion> */}
+      <Divider name="Stem!" />
+      <BodyShort className="text-center text-gray-800">
+        Her kan du stemme på oppgaver Team Designsystemet skal jobbe med
+      </BodyShort>
       <CardList posts={posts} filters={filters} />
     </>
   );
