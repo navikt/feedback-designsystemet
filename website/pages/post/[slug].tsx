@@ -15,7 +15,6 @@ interface post {
 const Post = ({ post }) => {
   const {
     title = "missing title",
-    name = "missing name",
     description = ["missing description"],
     images = null,
     tags = null,
