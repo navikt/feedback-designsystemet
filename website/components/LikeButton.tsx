@@ -26,7 +26,7 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
         setLikeState(votes.includes(email));
       }
     });
-  }, []);
+  }, [email, votes]);
 
   const useVote = () => {
     setLoading(true);
