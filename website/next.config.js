@@ -20,6 +20,7 @@ module.exports = {
     azureAppIssuer: process.env.AZURE_OPENID_CONFIG_ISSUER,
     azureAppWellKnownUrl: process.env.AZURE_APP_WELL_KNOWN_URL,
     azureAppJWK: process.env.AZURE_APP_JWK,
+    robotToken: process.env.ROBOT_TOKEN,
   },
   rewrites: () => [STUDIO_REWRITE],
   images: {

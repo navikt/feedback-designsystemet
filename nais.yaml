@@ -9,7 +9,8 @@ metadata:
 spec:
   image: {{ image }}
   port: 3000
-
+  envFrom:
+    - secret: my-secret
   #image: ghcr.io/navikt/myapplication:417dcaa2c839b9da72e0189e2cfdd4e90e9cc6fd
   #       ^--- interpolated from the ${{ env.docker_image }} variable in the action
   ingresses:
@@ -34,4 +35,3 @@ spec:
     sidecar:
       enabled: true
       autoLogin: true
-  
