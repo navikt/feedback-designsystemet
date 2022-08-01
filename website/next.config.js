@@ -21,6 +21,10 @@ module.exports = {
     azureAppWellKnownUrl: process.env.AZURE_APP_WELL_KNOWN_URL,
     azureAppJWK: process.env.AZURE_APP_JWK,
   },
+  i18n: {
+    locales: ["no"],
+    defaultLocale: "no",
+  },
   rewrites: () => [STUDIO_REWRITE],
   images: {
     domains: ["cdn.sanity.io"],
