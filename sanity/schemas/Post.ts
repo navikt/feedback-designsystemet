@@ -9,16 +9,19 @@ export default {
       name: "title",
       type: "string",
       title: "Title",
-      validation: Rule => [
+      validation: (Rule) => [
         Rule.required().error("Det må settes en tittel."),
         Rule.max(30).warning("Hold tittelen kort og konsis."),
-      ]
+      ],
     },
     {
       name: "slug",
       type: "slug",
       title: "Slug",
-      validation: Rule => Rule.required().error("Det må settes en slug. Du kan bruke Generate knappen."),
+      validation: (Rule) =>
+        Rule.required().error(
+          "Det må settes en slug. Du kan bruke Generate knappen."
+        ),
       options: {
         source: "title",
         maxLength: 96,
@@ -28,17 +31,22 @@ export default {
       name: "shortdescription",
       type: "string",
       title: "Short description",
-      validation: Rule => [
-        Rule.required().error('Det må settes en kort beskrivelse.'),
-        Rule.min(50).warning("Prøv å hold beskrivelsen kort, men gi nok informasjon til at brukerne fortstår hva kortet omhandler.")
-      ]
+      validation: (Rule) => [
+        Rule.required().error("Det må settes en kort beskrivelse."),
+        Rule.min(50).warning(
+          "Prøv å hold beskrivelsen kort, men gi nok informasjon til at brukerne fortstår hva kortet omhandler."
+        ),
+      ],
     },
     {
       name: "description",
       type: "array",
       title: "Description",
-      of: [{type: "block"}],
-      validation: Rule => Rule.required().min(50).warning('Her bør det gis en utdypende beskrivelse.')
+      of: [{ type: "block" }],
+      validation: (Rule) =>
+        Rule.required()
+          .min(50)
+          .warning("Her bør det gis en utdypende beskrivelse."),
     },
     {
       name: "images",
@@ -49,47 +57,51 @@ export default {
           name: "image",
           type: "image",
           title: "Image",
-        fields: [
-          {
-            name: "alt",
-            type: "string",
-            title: "Alternative text",
-          },
-        ],
-      },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+            },
+          ],
+        },
       ],
       options: {
         layout: "grid",
-      }
-      
+      },
     },
     {
       name: "date",
       type: "datetime",
       title: "Date",
       options: {
-        dateFormat: 'DD-MM-YYYY',
-      }
+        dateFormat: "DD-MM-YYYY",
+      },
     },
     {
       name: "state",
       type: "reference",
       title: "State",
       to: [{ type: "state" }],
-      validation: Rule => Rule.required().error("Det må settes en State.")
-     },
+      validation: (Rule) => Rule.required().error("Det må settes en State."),
+    },
     {
       title: "Tags",
       name: "tags",
       type: "array",
       of: [{ type: "reference", to: { type: "tag" } }],
-      validation: Rule => Rule.required().warning("Det bør velges minst en tag.")
+      validation: (Rule) =>
+        Rule.required().warning("Det bør velges minst en tag."),
     },
-    
-
+    {
+      title: "Votes",
+      name: "votes",
+      type: "array",
+      of: [{ type: "string" }],
+    },
   ],
   initialValue: {
-    date: (new Date()).toISOString()
+    date: new Date().toISOString(),
   },
   preview: {
     select: {

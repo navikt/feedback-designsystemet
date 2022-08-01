@@ -21,9 +21,10 @@ export type ICard = {
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const { title, _updatedAt, tags, description } = card;
+  const { title, _updatedAt, tags, slug, description } = card;
+
   return (
-    <Link href={`/post/${card.slug.current}`}>
+    <Link href={`/post/${slug.current}`}>
       <a
         tabIndex={0}
         className="flex flex-col text-text p-2 md:h-60 h-40 max-w-md ease-in-out duration-300 
