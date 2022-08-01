@@ -6,12 +6,12 @@ import { PostProps } from ".";
 
 const Roadmap: React.FC<PostProps> = ({ posts }) => {
   return (
-    <div>
+    <>
       <Divider name="In Progress" />
       <CardList posts={posts} category="In Progress" />
       <Divider name="Done" />
       <CardList posts={posts} category="Done" />
-    </div>
+    </>
   );
 };
 

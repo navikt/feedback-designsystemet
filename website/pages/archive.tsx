@@ -7,13 +7,13 @@ import { BodyShort } from "@navikt/ds-react";
 
 const Archive: React.FC<PostProps> = ({ posts }) => {
   return (
-    <div>
+    <>
       <Divider name="Arkiv" />
       <BodyShort className="text-center text-gray-800">
         Dette er en oversikt over funksjonaliteter som er implementert
       </BodyShort>
       <CardList posts={posts} category="Done" />
-    </div>
+    </>
   );
 };
 
