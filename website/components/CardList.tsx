@@ -14,7 +14,7 @@ const CardList: React.FC<CardProps> = ({ posts, category, filters }) => {
         {posts
           .filter((post) => post.state == category)
           .map((post, index) => (
-            <li>
+            <li key={index}>
               <Card key={category + " " + index} card={post} />
             </li>
           ))}
@@ -29,7 +29,7 @@ const CardList: React.FC<CardProps> = ({ posts, category, filters }) => {
             post.tags ? filters.some((f) => post.tags.includes(f)) : false
           )
           .map((post, index) => (
-            <li>
+            <li key={index}>
               <Card key={category + " " + index} card={post} />
             </li>
           ))}
@@ -39,7 +39,7 @@ const CardList: React.FC<CardProps> = ({ posts, category, filters }) => {
   return (
     <ul className="grid justify-center mx-auto mt-10 gap-x-12 gap-y-4 md:grid-cols-2 lg:grid-cols-3">
       {posts.map((post, index) => (
-        <li>
+        <li key={index}>
           <Card key={category + " " + index} card={post} />
         </li>
       ))}
