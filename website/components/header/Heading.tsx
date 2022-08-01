@@ -1,6 +1,6 @@
 import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
-import { Braille, EmployerFilled, LightBulb } from "@navikt/ds-icons";
+import { Braille, EmployerFilled, Folder, LightBulb } from "@navikt/ds-icons";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Header } from "@navikt/ds-react-internal";
 import { useRouter } from "next/router";
@@ -14,13 +14,12 @@ export interface IPerson {
   ident?: string;
 }
 const Heading: React.FC = () => {
-  const [value, setValue] = useState("forslag");
+  const [value, setValue] = useState(" ");
   const router = useRouter();
   const [user, setUser] = useState<IPerson>(null);
-
   const handleChange = (x) => {
     setValue(x);
-    value == "forslag" ? router.push("/roadmap") : router.push("/");
+    router.push("/" + x);
   };
 
   useEffect(() => {
@@ -51,13 +50,17 @@ const Heading: React.FC = () => {
         value={value}
         size="medium"
       >
-        <ToggleGroup.Item className="fane" value="forslag">
+        <ToggleGroup.Item className="fane" value=" ">
           <LightBulb aria-hidden />
           Forslag
         </ToggleGroup.Item>
         <ToggleGroup.Item className="fane" value="roadmap">
           <Braille aria-hidden />
           Roadmap
+        </ToggleGroup.Item>
+        <ToggleGroup.Item className="fane" value="archive">
+          <Folder aria-hidden />
+          Arkiv
         </ToggleGroup.Item>
       </ToggleGroup>
       <Header.User name={user?.name.split(",")[0]} />
