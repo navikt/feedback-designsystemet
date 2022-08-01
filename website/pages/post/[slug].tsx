@@ -1,11 +1,10 @@
-import { Button, Heading, Tag, ToggleGroup } from "@navikt/ds-react";
+import { Heading, Tag } from "@navikt/ds-react";
 import client from "../../lib/sanity/sanity";
 import { PortableText, PortableTextBlockComponent } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
-import Image from "next/image";
-import LikeButton from "../../components/LikeButton";
-import { useState } from "react";
+import ModalImage from "react-modal-image";
 import { ISlug } from "../../components/Card";
+import LikeButton from "../../components/LikeButton";
 
 interface IPost {
   title: String;
@@ -53,17 +52,17 @@ const Post = ({ post }) => {
         {title}
       </Heading>
       <PortableText value={description} />
-      <div className="grid sm:grid-cols-2 gap-2 pt-10 mx-auto">
+      <div className="grid sm:grid-cols-2 gap-3 pt-10">
         {images &&
           images.length > 0 &&
           images.map((image, key) => (
-            <Image
+            <ModalImage
               key={key}
-              src={urlFor(image).url()}
-              width="300"
-              height="300"
+              small={urlFor(image).size(650, 650).url()}
+              large={urlFor(image).url()}
               alt={image.alt}
-              className="rounded drop-shadow-md"
+              hideDownload="true"
+              className="rounded drop-shadow-md hover:scale-[1.02]"
             />
           ))}
       </div>
