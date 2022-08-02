@@ -3,7 +3,22 @@
 @tailwind utilities;
 
 body {
-  background-color: #eeeeee;
+  background-color: #e5e5e5;
+}
+
+.navds-accordion > * {
+  background-color: #e5e5e5;
+}
+
+.navds-accordion__header {
+  border-style: none !important;
+  border-color: #e5e5e5;
+  background-color: #e5e5e5 !important;
+}
+
+.navds-accordion__content {
+  background-color: #e5e5e5 !important;
+  border-bottom: none !important;
 }
 
 .likedButton {

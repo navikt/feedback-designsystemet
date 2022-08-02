@@ -1,5 +1,5 @@
 import { Accordion, Checkbox, CheckboxGroup, Select } from "@navikt/ds-react";
-import { PostProps, Tag } from "../pages/index";
+import { PostProps, Tag } from "../pages";
 
 /* import Layout from "../components/layout"; */
 

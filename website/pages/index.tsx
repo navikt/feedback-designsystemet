@@ -1,15 +1,7 @@
 import client from "../lib/sanity/sanity";
 import { ICard } from "../components/Card";
-import CardList from "../components/CardList";
-import {
-  Accordion,
-  BodyShort,
-  Checkbox,
-  CheckboxGroup,
-  Select,
-} from "@navikt/ds-react";
 import { useState } from "react";
-import Divider from "../components/Divider";
+import MainOverview from "../components/MainOverview";
 
 export interface PostProps {
   posts?: ICard[];
@@ -20,41 +12,12 @@ export interface Tag {
   title: String;
 }
 
-const Home: React.FC<PostProps> = ({ posts, tags }) => {
+const Home: React.FC<PostProps> = ({ posts }) => {
   const [filters, setFilters] = useState<string[]>(null);
 
   return (
     <>
-      {/* <Accordion>
-        <Accordion.Item>
-          <Accordion.Header>Filtrering</Accordion.Header>
-          <Accordion.Content>
-            <CheckboxGroup
-              legend="Velg status:"
-              onChange={(v) => setFilters(v)}
-              size="small"
-            >
-              {tags &&
-                tags.map((tag, index) => (
-                  <Checkbox key={index} value={tag.title}>
-                    {tag.title}
-                  </Checkbox>
-                ))}
-            </CheckboxGroup>
-
-            <Select label="Velg kategori:" size="medium">
-              <option value="">Velg kategori</option>
-              <option value="komponent">Komponent</option>
-              <option value="figma">Figma</option>
-            </Select>
-          </Accordion.Content>
-        </Accordion.Item>
-      </Accordion> */}
-      <Divider name="Stem!" />
-      <BodyShort className="text-center text-gray-800">
-        Her kan du stemme på oppgaver Team Designsystemet skal jobbe med
-      </BodyShort>
-      <CardList posts={posts} filters={filters} />
+      <MainOverview posts={posts} />
     </>
   );
 };
@@ -65,26 +28,19 @@ export async function getStaticProps() {
     `
     *[_type == "post"]| order(priority desc, _updatedAt desc) {
       title,
-      description,
       shortdescription,
       _updatedAt,
       slug,
       votes,
-      "tags":tags[]->title
+      "tags":tags[]->title,
+      "state":state->title
     }
     `
   );
-  const tags = await client.fetch(
-    `
-    *[_type == "tag"] {
-      title
-    }
-    `
-  );
+
   return {
     props: {
       posts,
-      tags,
     },
   };
 }
