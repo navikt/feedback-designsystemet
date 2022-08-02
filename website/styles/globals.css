@@ -1,4 +1,32 @@
 @tailwind base;
+/* Manually added styling for h1-h6 and ul/ol elements for PortableText in [slug].tsx. 
+This is because Tailwind automatically removes all styling to these elements in preflight. */
+@layer base {
+    h1 {
+      @apply text-heading-2xlarge;
+    }
+    h2 {
+      @apply text-heading-xlarge;
+    }
+    h3 {
+      @apply text-heading-large;
+    }
+    h4 {
+        @apply text-heading-medium;
+    }
+    h5 {
+        @apply text-heading-small;
+    }
+    h6 {
+        @apply text-heading-xsmall;
+    }
+    ul {
+        @apply list-disc;
+    }
+    ol {
+        @apply list-decimal;
+    }
+  }
 @tailwind components;
 @tailwind utilities;
 
