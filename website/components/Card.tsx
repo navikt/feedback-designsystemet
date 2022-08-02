@@ -1,3 +1,4 @@
+import { LikeFilled } from "@navikt/ds-icons";
 import { BodyShort, Heading, Tag } from "@navikt/ds-react";
 import Link from "next/link";
 
@@ -13,22 +14,23 @@ export interface CardProps {
 export type ICard = {
   _updatedAt: String;
   title: String;
-  shortdescription: Array<string>;
+  shortDescription: Array<string>;
   description: Array<string>;
   name: String;
   slug: ISlug;
   tags?: string[];
   state: String;
+  votes: Array<string>;
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const { title, _updatedAt, tags, slug, shortdescription } = card;
+  const { title, _updatedAt, tags, slug, votes, shortDescription } = card;
 
   return (
     <Link href={`/post/${slug.current}`}>
       <a
         tabIndex={0}
-        className="flex flex-col text-text p-2 md:h-60 h-40 max-w-md ease-in-out duration-300 
+        className="flex flex-col text-text p-2 md:h-60 h-40 max-w-md min-w-[28rem] ease-in-out duration-300 
         hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle 
         shadow shadow-card border border-border rounded-lg cursor-pointer m-2 bg-canvas-background-light"
       >
@@ -36,12 +38,13 @@ const Card: React.FC<CardProps> = ({ card }) => {
           {title}
         </Heading>
         <BodyShort className="text-center px-2 line-clamp-4">
-          {shortdescription}
+          {shortDescription}
         </BodyShort>
-        <div className="mt-auto flex justify-between">
-          <BodyShort className="px-2 pt-1 italic" size="small">
-            Publisert: {_updatedAt.slice(0, 10).split("-").reverse().join(".")}
-          </BodyShort>
+        <div className="mt-auto flex justify-between p-2">
+          <div className="flex flex-row">
+            {votes ? votes.length : 0}{" "}
+            <LikeFilled color="#005B82" className="ml-1" />
+          </div>
           <div className="space-x-1">
             {tags &&
               tags.length > 0 &&

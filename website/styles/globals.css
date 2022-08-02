@@ -31,5 +31,9 @@ This is because Tailwind automatically removes all styling to these elements in 
 @tailwind utilities;
 
 body {
-    background-color: #e5e5e5;
+  background-color: #eeeeee;
+}
+
+.likedButton {
+  fill-rule: nonzero !important;
 }

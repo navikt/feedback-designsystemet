@@ -8,7 +8,7 @@ import { BodyShort } from "@navikt/ds-react";
 const Archive: React.FC<PostProps> = ({ posts }) => {
   return (
     <>
-      <Divider name="Arkiv" />
+      <Divider name="Arkiv" color="black-200" width="2" />
       <BodyShort className="text-center text-gray-800">
         Dette er en oversikt over funksjonaliteter som er implementert
       </BodyShort>

@@ -39,7 +39,7 @@ const Post = ({ post }) => {
         <a href={"/"}>{"< Tilbake"}</a>
         <LikeButton votes={post.votes} id={post._id} />
       </div>
-      <div className="pt-10 pb-4 space-x-1">
+      <div className="pt-5 pb-4 space-x-1">
         {tags &&
           tags.length > 0 &&
           tags.map((tag, index) => (
