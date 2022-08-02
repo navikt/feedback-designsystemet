@@ -14,6 +14,7 @@ export interface CardProps {
 export type ICard = {
   _updatedAt: String;
   title: String;
+  shortDescription: Array<string>;
   description: Array<string>;
   name: String;
   slug: ISlug;
@@ -23,7 +24,7 @@ export type ICard = {
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const { title, _updatedAt, tags, slug, votes, description } = card;
+  const { title, _updatedAt, tags, slug, votes, shortDescription } = card;
 
   return (
     <Link href={`/post/${slug.current}`}>
@@ -36,11 +37,9 @@ const Card: React.FC<CardProps> = ({ card }) => {
         <Heading className="text-center" spacing level="2" size="medium">
           {title}
         </Heading>
-        {/*         <BodyShort className="text-center px-2 line-clamp-4">
-          {" "}
-          {description}{" "}
+        <BodyShort className="text-center px-2 line-clamp-4">
+          {shortDescription}
         </BodyShort>
- */}{" "}
         <div className="mt-auto flex justify-between p-2">
           <div className="flex flex-row">
             {votes ? votes.length : 0}{" "}

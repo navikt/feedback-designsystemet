@@ -22,6 +22,10 @@ module.exports = {
     azureAppJWK: process.env.AZURE_APP_JWK,
     robotToken: process.env.ROBOT_TOKEN,
   },
+  i18n: {
+    locales: ["no"],
+    defaultLocale: "no",
+  },
   rewrites: () => [STUDIO_REWRITE],
   images: {
     domains: ["cdn.sanity.io"],

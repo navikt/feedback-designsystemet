@@ -66,6 +66,7 @@ export async function getStaticProps() {
     *[_type == "post"]| order(priority desc, _updatedAt desc) {
       title,
       description,
+      shortdescription,
       _updatedAt,
       slug,
       votes,
