@@ -1,9 +1,9 @@
 import { Like, LikeFilled } from "@navikt/ds-icons";
 import { Loader, Switch } from "@navikt/ds-react";
 import { useEffect, useState } from "react";
-import registerVote from "../lib/hooks/registerVote";
+import registerVote from "../lib/hooks/toggleVote";
 import removeVote from "../lib/hooks/removeVote";
-import client from "../lib/sanity/sanity";
+import toggleVote from "../lib/hooks/toggleVote";
 
 interface IVotingInfo {
   id: string;
@@ -32,12 +32,7 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
     setLoading(true);
     const timer = setTimeout(() => {
       setLikeState(!likeState);
-      if (votes && likeState) {
-        const index = votes.indexOf(email);
-        removeVote(id, index);
-      } else {
-        registerVote(id, email);
-      }
+      toggleVote(id);
       setLoading(false);
     }, 1000);
     return () => clearTimeout(timer);
