@@ -68,6 +68,7 @@ export async function getStaticProps() {
       description,
       _updatedAt,
       slug,
+      votes,
       "tags":tags[]->title
     }
     `
