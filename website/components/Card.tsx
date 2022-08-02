@@ -13,6 +13,7 @@ export interface CardProps {
 export type ICard = {
   _updatedAt: String;
   title: String;
+  shortdescription: Array<string>;
   description: Array<string>;
   name: String;
   slug: ISlug;
@@ -21,7 +22,7 @@ export type ICard = {
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const { title, _updatedAt, tags, slug, description } = card;
+  const { title, _updatedAt, tags, slug, shortdescription } = card;
 
   return (
     <Link href={`/post/${slug.current}`}>
@@ -34,11 +35,9 @@ const Card: React.FC<CardProps> = ({ card }) => {
         <Heading className="text-center" spacing level="2" size="medium">
           {title}
         </Heading>
-        {/*         <BodyShort className="text-center px-2 line-clamp-4">
-          {" "}
-          {description}{" "}
+        <BodyShort className="text-center px-2 line-clamp-4">
+          {shortdescription}
         </BodyShort>
- */}{" "}
         <div className="mt-auto flex justify-between">
           <BodyShort className="px-2 pt-1 italic" size="small">
             Publisert: {_updatedAt.slice(0, 10).split("-").reverse().join(".")}
