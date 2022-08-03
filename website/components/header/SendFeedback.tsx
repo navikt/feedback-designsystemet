@@ -8,11 +8,7 @@ const SendFeedback = () => {
 
   return (
     <>
-      <Button
-        variant="primary"
-        size="medium"
-        onClick={() => setOpenState(true)}
-      >
+      <Button variant="primary" size="small" onClick={() => setOpenState(true)}>
         <Add aria-hidden />
         Send inn forslag
       </Button>

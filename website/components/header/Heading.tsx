@@ -39,9 +39,11 @@ const Heading: React.FC = () => {
       <div className="ml-3 flex flex-row">
         <HeaderLogo />
         <Header.Title>Feedback</Header.Title>
-        <SendFeedback />
       </div>
-      <Header.User name={user?.name.split(",")[0]} />
+      <div className="flex flex-row">
+        <SendFeedback />
+        <Header.User name={user?.name.split(",")[0]} />
+      </div>
     </Header>
   );
 };
