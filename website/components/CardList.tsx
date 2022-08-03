@@ -13,9 +13,7 @@ const CardList: React.FC<CardProps> = ({ posts, category }) => {
       {posts
         .filter((post) => post.state == category)
         .map((post, index) => (
-          <li className="mx-auto" key={index}>
-            <Card key={category + " " + index} card={post} />
-          </li>
+          <Card key={category + " " + index} card={post} />
         ))}
     </ul>
   );
