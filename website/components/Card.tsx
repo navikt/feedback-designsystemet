@@ -31,8 +31,7 @@ const Card: React.FC<CardProps> = ({ card }) => {
       <a
         tabIndex={0}
         className="flex flex-col text-text p-2 md:h-60 h-40 max-w-md min-w-[28rem] ease-in-out duration-300 
-        hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle 
-        shadow shadow-card border border-border rounded-lg cursor-pointer m-2 bg-canvas-background-light"
+        hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle shadow-xl border border-gray-400 rounded-lg cursor-pointer m-2 bg-canvas-background-light"
       >
         <Heading className="text-center" spacing level="2" size="medium">
           {title}
