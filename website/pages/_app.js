@@ -2,14 +2,11 @@ import "../styles/globals.css";
 import "../components/header/Heading.css";
 import Heading from "../components/header/Heading";
 import Head from "next/head";
-import { useState } from "react";
 import { AuthProvider } from "../lib/auth/authprovider";
 import { ThemeProvider, studioTheme } from "@sanity/ui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function MyApp({ Component, pageProps }) {
-  const [loggedIn, setLoggedIn] = useState(false);
-
   const queryClient = new QueryClient();
 
   return (

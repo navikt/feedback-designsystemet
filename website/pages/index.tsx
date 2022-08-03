@@ -1,8 +1,7 @@
 import client from "../lib/sanity/sanity";
 import { ICard } from "../components/Card";
-import CardList from "../components/CardList";
-import { Accordion, Checkbox, CheckboxGroup, Select } from "@navikt/ds-react";
 import { useState } from "react";
+import MainOverview from "../components/MainOverview";
 
 export interface PostProps {
   posts?: ICard[];
@@ -13,66 +12,34 @@ export interface Tag {
   title: String;
 }
 
-const Home: React.FC<PostProps> = ({ posts, tags }) => {
+const Home: React.FC<PostProps> = ({ posts }) => {
   const [filters, setFilters] = useState<string[]>(null);
 
   return (
     <>
-      <Accordion>
-        <Accordion.Item>
-          <Accordion.Header>Filtrering</Accordion.Header>
-          <Accordion.Content>
-            <CheckboxGroup
-              legend="Velg status:"
-              onChange={(v) => setFilters(v)}
-              size="small"
-            >
-              {tags &&
-                tags.map((tag, index) => (
-                  <Checkbox key={index} value={tag.title}>
-                    {tag.title}
-                  </Checkbox>
-                ))}
-            </CheckboxGroup>
-
-            <Select label="Velg kategori:" size="medium">
-              <option value="">Velg kategori</option>
-              <option value="komponent">Komponent</option>
-              <option value="figma">Figma</option>
-            </Select>
-          </Accordion.Content>
-        </Accordion.Item>
-      </Accordion>
-
-      <CardList posts={posts} filters={filters} />
+      <MainOverview posts={posts} />
     </>
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // It's important to default the slug so that it doesn't return "undefined"
   const posts = await client.fetch(
     `
-    *[_type == "post"] {
+    *[_type == "post"]| order(priority desc, _updatedAt desc) {
       title,
-      description,
+      shortdescription,
       _updatedAt,
       slug,
-      "tags":tags[]->title
-    }
-    `
-  );
-  const tags = await client.fetch(
-    `
-    *[_type == "tag"] {
-      title
+      votes,
+      "tags":tags[]->title,
+      "state":state->title
     }
     `
   );
   return {
     props: {
       posts,
-      tags,
     },
   };
 }

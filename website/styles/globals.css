@@ -1,3 +1,54 @@
 @tailwind base;
+/* Manually added styling for h1-h6 and ul/ol elements for PortableText in [slug].tsx. 
+This is because Tailwind automatically removes all styling to these elements in preflight. */
+@layer base {
+  h1 {
+    @apply text-heading-2xlarge;
+  }
+  h2 {
+    @apply text-heading-xlarge;
+  }
+  h3 {
+    @apply text-heading-large;
+  }
+  h4 {
+    @apply text-heading-medium;
+  }
+  h5 {
+    @apply text-heading-small;
+  }
+  h6 {
+    @apply text-heading-xsmall;
+  }
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+}
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #e5e5e5;
+}
+
+.navds-accordion > * {
+  background-color: #e5e5e5;
+}
+
+.navds-accordion__header {
+  border-style: none !important;
+  border-color: #e5e5e5;
+  background-color: #e5e5e5 !important;
+}
+
+.navds-accordion__content {
+  background-color: #e5e5e5 !important;
+  border-bottom: none !important;
+}
+
+.likedButton {
+  fill-rule: nonzero !important;
+}

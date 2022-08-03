@@ -2,34 +2,44 @@ import { Heading, Tag } from "@navikt/ds-react";
 import client from "../../lib/sanity/sanity";
 import { PortableText, PortableTextBlockComponent } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
-import Image from "next/image";
+import ModalImage from "react-modal-image";
+import { ISlug } from "../../components/Card";
+import LikeButton from "../../components/LikeButton";
 
-interface post {
+interface IPost {
   title: String;
+  _id: string;
   name: String;
+  slug: ISlug;
   textfield: PortableTextBlockComponent;
   images?: any;
   tags?: Array<string>;
+  votes?: Array<string>;
 }
 
 const Post = ({ post }) => {
   const {
+    _id = " ",
     title = "missing title",
-    name = "missing name",
     description = ["missing description"],
     images = null,
     tags = null,
+    votes = [],
   } = post;
 
   const builder = imageUrlBuilder(client);
+
   function urlFor(source) {
     return builder.image(source);
   }
 
   return (
-    <div className="flex flex-col mx-auto max-w-2xl pt-10">
-      <a href={"/"}>{"< Tilbake"}</a>
-      <div className="pt-10 pb-4 space-x-1">
+    <div className="flex flex-col flex-initial mx-auto px-20 max-w-[2200px] pt-10">
+      <div className="flex flex-row justify-between">
+        <a href={"/"}>{"< Tilbake"}</a>
+        <LikeButton votes={post.votes} id={post._id} />
+      </div>
+      <div className="pt-5 pb-4 space-x-1">
         {tags &&
           tags.length > 0 &&
           tags.map((tag, index) => (
@@ -42,17 +52,17 @@ const Post = ({ post }) => {
         {title}
       </Heading>
       <PortableText value={description} />
-      <div className="grid sm:grid-cols-2 gap-2 pt-10 mx-auto">
+      <div className="grid sm:grid-cols-2 gap-3 place-items-center pt-10">
         {images &&
           images.length > 0 &&
           images.map((image, key) => (
-            <Image
+            <ModalImage
               key={key}
-              src={urlFor(image).url()}
-              width="300"
-              height="300"
+              small={urlFor(image).size(650, 650).url()}
+              large={urlFor(image).url()}
               alt={image.alt}
-              className="rounded drop-shadow-md"
+              hideDownload="true"
+              className="rounded drop-shadow-md hover:scale-[1.02]"
             />
           ))}
       </div>
@@ -77,12 +87,13 @@ export async function getStaticProps(context) {
   const post = await client.fetch(
     `
     *[_type == "post" && slug.current == $slug][0]{
+      _id,
       title,
-      name,
       slug,
       images,
       description,
-      "tags": tags[]->title
+      "tags": tags[]->title,
+      votes,
     }
     `,
     {

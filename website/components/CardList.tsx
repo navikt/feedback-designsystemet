@@ -1,43 +1,28 @@
-import client from "../lib/sanity/sanity";
 import Card, { ICard } from "../components/Card";
 
 export interface CardProps {
   posts: ICard[];
   category?: String;
-  filters?: string[];
+  roadmap?: boolean;
 }
 
-const CardList: React.FC<CardProps> = ({ posts, category, filters }) => {
-  if (category)
-    return (
-      <div className="grid justify-center mx-auto mt-10 gap-x-12 gap-y-4 md:grid-cols-2 lg:grid-cols-3 ">
-        {posts
-          .filter((post) => post.state == category)
-          .map((post, index) => (
-            <Card key={category + " " + index} card={post} />
-          ))}
-      </div>
-    );
-
-  if (filters && filters.length > 0)
-    return (
-      <div className="grid justify-center mx-auto mt-10 gap-x-12 gap-y-4 md:grid-cols-2 lg:grid-cols-3 ">
-        {posts
-          .filter((post) =>
-            post.tags ? filters.some((f) => post.tags.includes(f)) : false
-          )
-          .map((post, index) => (
-            <Card key={category + " " + index} card={post} />
-          ))}
-      </div>
-    );
+const CardList: React.FC<CardProps> = ({ posts, category, roadmap }) => {
+  if (!posts) return <p className="m-auto mt-60">Ingen aktive kort</p>;
 
   return (
-    <div className="grid justify-center mx-auto mt-10 gap-x-12 gap-y-4 md:grid-cols-2 lg:grid-cols-3 ">
-      {posts.map((post, index) => (
-        <Card key={category + " " + index} card={post} />
-      ))}
-    </div>
+    <ul
+      className={
+        roadmap === true
+          ? "grid list-none justify-center place-content-center mx-auto bg-[#CFCFCF] gap-x-12 gap-y-4 xl:grid-cols-1 xxl:grid-cols-2 xxxl:grid-cols-3"
+          : "grid list-none justify-center place-content-center mx-auto mt-10 gap-x-8 gap-y-4 lg:grid-cols-1 xl:grid-cols-2 xxl:grid-cols-3 xxxl:grid-cols-4"
+      }
+    >
+      {posts
+        .filter((post) => post.state == category)
+        .map((post, index) => (
+          <Card key={category + " " + index} card={post} />
+        ))}
+    </ul>
   );
 };
 

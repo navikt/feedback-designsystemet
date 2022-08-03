@@ -1,3 +1,7 @@
+import getConfig from "next/config";
+
+const { serverRuntimeConfig } = getConfig();
+
 export const config = {
   /**
    * Find your project ID and dataset in `sanity.json` in your studio project.
@@ -9,6 +13,7 @@ export const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   projectId: "hulzwatj",
   apiVersion: "2022-07-12", // or today's date for latest
+  token: serverRuntimeConfig.robotToken,
   /**
    * Set useCdn to `false` if your application require the freshest possible
    * data always (potentially slightly slower and a bit more expensive).
