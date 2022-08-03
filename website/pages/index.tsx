@@ -22,7 +22,7 @@ const Home: React.FC<PostProps> = ({ posts }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // It's important to default the slug so that it doesn't return "undefined"
   const posts = await client.fetch(
     `
