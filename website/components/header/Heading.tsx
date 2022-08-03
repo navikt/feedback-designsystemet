@@ -37,7 +37,7 @@ const Heading: React.FC = () => {
     <Header className="flex justify-between">
       <div className="ml-3 flex flex-row">
         <HeaderLogo />
-        <Header.Title as="h1">Feedback</Header.Title>
+        <Header.Title>Feedback</Header.Title>
       </div>
       <Header.User name={user?.name.split(",")[0]} />
     </Header>
