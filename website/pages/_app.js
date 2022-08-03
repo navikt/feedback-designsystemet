@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import "../components/header/Heading.css";
 import Heading from "../components/header/Heading";
 import Head from "next/head";
 import { useState } from "react";

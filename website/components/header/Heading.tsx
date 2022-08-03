@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import HeaderLogo from "../../public/HeaderLogo";
+import SendFeedback from "./SendFeedback";
 
 export interface IPerson {
   status: number;
@@ -38,6 +39,7 @@ const Heading: React.FC = () => {
       <div className="ml-3 flex flex-row">
         <HeaderLogo />
         <Header.Title>Feedback</Header.Title>
+        <SendFeedback />
       </div>
       <Header.User name={user?.name.split(",")[0]} />
     </Header>

@@ -1,5 +1,5 @@
 import "@navikt/ds-css";
-import { Modal, Button, Heading } from "@navikt/ds-react";
+import { Modal, Button, Heading, TextField, Textarea } from "@navikt/ds-react";
 import { Add } from "@navikt/ds-icons";
 import { useState } from "react";
 
@@ -21,10 +21,19 @@ const SendFeedback = () => {
         aria-label="Send inn forslag"
         onClose={() => setOpenState(false)}
       >
-        <Modal.Content>
+        <Modal.Content className=" space-y-6">
           <Heading spacing level="1" size="large">
             Send inn forslag til Designsystemet
           </Heading>
+          <TextField label="Tittel" size="medium" />
+          <Textarea label="Body" />
+          <Button
+            variant="primary"
+            size="medium"
+            onClick={() => setOpenState(false)}
+          >
+            Send inn
+          </Button>
         </Modal.Content>
       </Modal>
     </>
