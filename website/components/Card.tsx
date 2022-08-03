@@ -12,14 +12,14 @@ export interface CardProps {
 }
 
 export type ICard = {
-  _updatedAt: String;
-  title: String;
+  _updatedAt: string;
+  title: string;
   shortdescription: Array<string>;
   description: Array<string>;
-  name: String;
+  name: string;
   slug: ISlug;
   tags?: string[];
-  state: String;
+  state: string;
   votes: Array<string>;
 };
 
@@ -29,19 +29,13 @@ const Card: React.FC<CardProps> = ({ card }) => {
   return (
     <Link href={`/post/${slug.current}`}>
       <li
-        aria-labelledby="heading"
+        aria-label={title}
         tabIndex={0}
-        className="flex flex-col p-2 md:h-60 h-40 max-w-md min-w-[28rem] ease-in-out duration-300 
+        className="flex flex-col text-text p-2 md:h-60 h-40 max-w-md min-w-[28rem] ease-in-out duration-300 
         hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle 
-        shadow shadow-card border border-border rounded-lg cursor-pointer m-2 mx-auto bg-canvas-background-light"
+        shadow-xl border border-gray-400 rounded-lg cursor-pointer mx-auto m-2 bg-canvas-background-light"
       >
-        <Heading
-          id="heading"
-          className="text-center"
-          spacing
-          level="2"
-          size="medium"
-        >
+        <Heading className="text-center" spacing level="2" size="medium">
           {title}
         </Heading>
         <BodyShort className="text-center px-2 line-clamp-4">

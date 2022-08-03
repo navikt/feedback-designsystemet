@@ -3549,7 +3549,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
+classnames@^2.2.5, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -5477,6 +5477,11 @@ focus-lock@^0.11.2:
   integrity sha512-pZ2bO++NWLHhiKkgP1bEXHhR1/OjVcSvlCJ98aNJDFeb7H5OOQaO+SKOZle6041O9rv2tmbrO4JzClAvDUHf0g==
   dependencies:
     tslib "^2.0.3"
+
+focus-visible@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/focus-visible/-/focus-visible-5.2.0.tgz#3a9e41fccf587bd25dcc2ef045508284f0a4d6b3"
+  integrity sha512-Rwix9pBtC1Nuy5wysTmKy+UjbDJpIfg8eHjw0rjZ1mX4GNLz1Bmd16uDpI3Gk1i70Fgcs8Csg2lPm8HULFg9DQ==
 
 follow-redirects@^1.2.4:
   version "1.15.1"
@@ -9209,6 +9214,15 @@ react-base16-styling@^0.6.0:
     lodash.curry "^4.0.1"
     lodash.flow "^3.3.0"
     pure-color "^1.2.0"
+
+react-chrono@^1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/react-chrono/-/react-chrono-1.18.0.tgz#39892727cf7165495cc2b7fa873ad01eb2df1517"
+  integrity sha512-K9OhdR1P7fgiyB4K9Ni2ITfeLKN2DpXgYPBhI94LOjkwYPnUPGvzJdq3FVS1EG9aMSa3QNMi9RDu92H2T/eaXA==
+  dependencies:
+    classnames "^2.3.1"
+    focus-visible "^5.2.0"
+    styled-components "^5.3.5"
 
 react-click-outside@^3.0.0:
   version "3.0.1"

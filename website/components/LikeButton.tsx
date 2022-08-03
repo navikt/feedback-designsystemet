@@ -16,12 +16,10 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
 
   const useVote = () => {
     setLoading(true);
-    const timer = setTimeout(() => {
-      setLikeState(!likeState);
-      toggleVote(id);
-      setLoading(false);
-    }, 1000);
-    return () => clearTimeout(timer);
+    setLikeState(!likeState);
+    toggleVote(id);
+    setLoading(false);
+    console.log(votes.length);
   };
 
   if (loading)

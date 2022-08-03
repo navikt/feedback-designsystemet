@@ -34,7 +34,7 @@ const Post = ({ post }) => {
   }
 
   return (
-    <div className="flex flex-col mx-auto max-w-2xl pt-10">
+    <div className="flex flex-col flex-initial mx-auto px-20 max-w-[2200px] pt-10">
       <div className="flex flex-row justify-between">
         <a href={"/"}>{"< Tilbake"}</a>
         <LikeButton votes={post.votes} id={post._id} />
@@ -52,7 +52,7 @@ const Post = ({ post }) => {
         {title}
       </Heading>
       <PortableText value={description} />
-      <div className="grid sm:grid-cols-2 gap-3 pt-10">
+      <div className="grid sm:grid-cols-2 gap-3 place-items-center pt-10">
         {images &&
           images.length > 0 &&
           images.map((image, key) => (
