@@ -71,6 +71,12 @@ export default {
       },
     },
     {
+      name: "figma",
+      type: "string",
+      title: "Embedded Figma link",
+      validation: (Rule) => Rule.required().warning("Her er det viktig å BARE ha med embed-linken, ikke hele embed-koden."),
+    },
+    {
       name: "date",
       type: "datetime",
       title: "Date",

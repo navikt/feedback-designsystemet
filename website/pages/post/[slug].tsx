@@ -24,6 +24,7 @@ const Post = ({ post }) => {
     title = "missing title",
     description = ["missing description"],
     images = null,
+    figma = "",
     tags = null,
     votes = [],
   } = post;
@@ -71,6 +72,16 @@ const Post = ({ post }) => {
             />
           ))}
       </div>
+      <div>
+        {figma && (
+          <iframe
+            src={figma}
+            title="Embedded Figma prototype"
+            width="100%"
+            height="800"
+          ></iframe>
+        )}
+      </div>
     </div>
   );
 };
@@ -85,6 +96,7 @@ export async function getServerSideProps(context) {
       title,
       slug,
       images,
+      figma,
       description,
       "tags": tags[]->title,
       votes,
