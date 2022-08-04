@@ -61,15 +61,10 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
         </>
       )}
       {!hasVoted && (
-<<<<<<< HEAD
         <button aria-live="polite" className="text-2xl" onClick={useVote}>
           {votes ? votes.length : 0}
-=======
-        <button className="text-2xl" onClick={useVote}>
-          {votes ? likes : 0}
->>>>>>> e2acbea897314f24532623bf28b285a1a2e7f999
           <NotLikedSVG className="mx-auto mt-2 scale-150 fill-black" />
-          <p className="m-auto mt-3"> Stem </p>
+          <p className="m-auto mt-3"> Stem</p>
         </button>
       )}
     </div>
