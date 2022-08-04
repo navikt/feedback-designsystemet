@@ -5,6 +5,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import ModalImage from "react-modal-image";
 import { ISlug } from "../../components/Card";
 import LikeButton from "../../components/LikeButton";
+import { Left, LeftFilled } from "@navikt/ds-icons";
 
 interface IPost {
   title: String;
@@ -34,12 +35,16 @@ const Post = ({ post }) => {
   }
 
   return (
-    <div className="flex flex-col flex-initial mx-auto px-20 max-w-[2200px] pt-10">
+    <div className="flex flex-col flex-1 max-w-[71vw] min-w-[70vw] min-h-[70vh] mt-20 mb-20 border-2 rounded-md flex-initial mx-auto bg-white max-w-[2200px] p-20">
       <div className="flex flex-row justify-between">
-        <a href={"/"}>{"< Tilbake"}</a>
+        <a className="border text-text rounded p-2 h-fit" href={"/"}>
+          <div className="flex flex-row place-items-center">
+            <Left /> Tilbake
+          </div>
+        </a>
         <LikeButton votes={post.votes} id={post._id} />
       </div>
-      <div className="pt-5 pb-4 space-x-1">
+      <div className="pt-20 pb-4 space-x-1">
         {tags &&
           tags.length > 0 &&
           tags.map((tag, index) => (
@@ -70,18 +75,7 @@ const Post = ({ post }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const paths = await client.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
-  );
-
-  return {
-    paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
   const post = await client.fetch(
