@@ -33,7 +33,7 @@ export async function getServerSideProps() {
       slug,
       votes,
       "tags":tags[]->title,
-      "state":state->title
+      "status":status->title
     }
     `
   );

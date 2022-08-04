@@ -1,5 +1,3 @@
-import State from "./State";
-
 export default {
   name: "post",
   type: "document",
@@ -85,11 +83,11 @@ export default {
       },
     },
     {
-      name: "state",
+      name: "status",
       type: "reference",
-      title: "State",
-      to: [{ type: "state" }],
-      validation: (Rule) => Rule.required().error("Det må settes en State."),
+      title: "Status",
+      to: [{ type: "status" }],
+      validation: (Rule) => Rule.required().error("Det må settes en status."),
     },
     {
       title: "Tags",

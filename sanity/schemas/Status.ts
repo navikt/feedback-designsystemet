@@ -1,13 +1,13 @@
 export default {
-    name: "state",
-    title: "State",
+    name: "status",
+    title: "Status",
     type: "document",
     fields: [
       {
         name: "title",
         title: "Title",
         type: "string",
-        validation: Rule => Rule.required().warning('En tag må ha en tittle.')
+        validation: Rule => Rule.required().warning('En status må ha en tittel.')
       },
     ],
   };
