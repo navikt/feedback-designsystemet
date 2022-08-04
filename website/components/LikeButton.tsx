@@ -40,7 +40,7 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
       const voted = await res.json();
       sethasVoted(voted);
     });
-  }, []);
+  }, [id]);
 
   if (loading)
     return (
