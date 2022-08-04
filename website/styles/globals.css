@@ -30,13 +30,17 @@ This is because Tailwind automatically removes all styling to these elements in 
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
   background-color: #e5e5e5;
+  height: 100%;
+  margin: 0 auto;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
+@media (max-width: 600px) {
+  body {
+    width: fit-content;
+  }
 }
 
 .navds-accordion > * {
