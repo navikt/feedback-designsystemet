@@ -5,7 +5,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import ModalImage from "react-modal-image";
 import { ISlug } from "../../components/Card";
 import LikeButton from "../../components/LikeButton";
-import { Left, LeftFilled } from "@navikt/ds-icons";
+import { Left } from "@navikt/ds-icons";
 
 interface IPost {
   title: String;
@@ -35,7 +35,7 @@ const Post = ({ post }) => {
   }
 
   return (
-    <div className="flex flex-col flex-1 max-w-[71vw] min-w-[70vw] min-h-[70vh] mt-20 mb-20 border-2 rounded-md flex-initial mx-auto bg-white max-w-[2200px] p-20">
+    <div className="flex flex-col flex-1 max-w-[70vw] min-w-[69vw] min-h-[70vh] mt-20 mb-20 border-2 rounded-md flex-initial mx-auto bg-white max-w-[2200px] p-20">
       <div className="flex flex-row justify-between">
         <a className="border text-text rounded p-2 h-fit" href={"/"}>
           <div className="flex flex-row place-items-center">

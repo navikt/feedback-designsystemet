@@ -1,8 +1,10 @@
 import LikedSVG from "../public/LikedSVG";
 import NotLikedSVG from "../public/NotLikedSVG";
 import { Loader } from "@navikt/ds-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toggleVote from "../lib/hooks/toggleVote";
+import userHasVoted from "../lib/hooks/userHasVoted";
+import { json } from "stream/consumers";
 
 interface IVotingInfo {
   id: string;
@@ -10,17 +12,35 @@ interface IVotingInfo {
 }
 
 const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
+  const [hasVoted, sethasVoted] = useState<boolean>(false);
+  const [likes, setLikes] = useState<number>(votes?.length);
   const [loading, setLoading] = useState<boolean>(false);
-  const [email, setEmail] = useState<string>();
-  const [likeState, setLikeState] = useState<boolean>();
 
   const useVote = () => {
     setLoading(true);
-    setLikeState(!likeState);
-    toggleVote(id);
-    setLoading(false);
-    console.log(votes.length);
+    const timer = setTimeout(() => {
+      if (hasVoted) {
+        setLikes(likes - 1);
+      } else {
+        setLikes(likes + 1);
+      }
+      toggleVote(id);
+      sethasVoted(!hasVoted);
+      setLoading(false);
+    }, 700);
+    return () => clearTimeout(timer);
   };
+
+  useEffect(() => {
+    fetch(`/api/hasVoted`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    }).then(async (res) => {
+      const voted = await res.json();
+      sethasVoted(voted);
+    });
+  }, []);
 
   if (loading)
     return (
@@ -31,10 +51,10 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
 
   return (
     <div className="grid w-60 h-18">
-      {likeState && (
+      {hasVoted && (
         <>
-          <button className="text-xl" onClick={useVote}>
-            {votes ? votes.length : 0}
+          <button className="text-2xl" onClick={useVote}>
+            {votes ? likes : 0}
             <LikedSVG className="likedButton mx-auto mt-2 scale-150" />
             <p color="#0067C5" className="m-auto mt-3">
               Stem
@@ -42,8 +62,8 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
           </button>
         </>
       )}
-      {!likeState && (
-        <button className="text-xl" onClick={useVote}>
+      {!hasVoted && (
+        <button className="text-2xl" onClick={useVote}>
           {votes ? votes.length : 0}
           <NotLikedSVG className="mx-auto mt-2 scale-150 fill-black" />
           <p className="m-auto mt-3"> Stem </p>
