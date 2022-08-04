@@ -42,13 +42,13 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
 
   if (loading)
     return (
-      <div className="w-60 grid grid-rows-1 h-18">
+      <div className="w-40 grid grid-rows-1 h-18">
         <Loader className="m-auto" />
       </div>
     );
 
   return (
-    <div className="grid w-60 h-18">
+    <div className="grid w-40 h-18">
       {hasVoted && (
         <>
           <button aria-live="polite" className="text-2xl" onClick={useVote}>
@@ -61,10 +61,10 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
         </>
       )}
       {!hasVoted && (
-        <button className="text-2xl" onClick={useVote}>
-          {votes ? likes : 0}
+        <button aria-live="polite" className="text-2xl" onClick={useVote}>
+          {votes ? votes.length : 0}
           <NotLikedSVG className="mx-auto mt-2 scale-150 fill-black" />
-          <p className="m-auto mt-3"> Stem </p>
+          <p className="m-auto mt-3"> Stem</p>
         </button>
       )}
     </div>
