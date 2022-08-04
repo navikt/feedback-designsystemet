@@ -19,7 +19,6 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
     setLikeState(!likeState);
     toggleVote(id);
     setLoading(false);
-    console.log(votes.length);
   };
 
   if (loading)
@@ -33,7 +32,7 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
     <div className="grid w-60 h-18">
       {likeState && (
         <>
-          <button className="text-xl" onClick={useVote}>
+          <button aria-live="polite" className="text-xl" onClick={useVote}>
             {votes ? votes.length : 0}
             <LikedSVG className="likedButton mx-auto mt-2 scale-150" />
             <p color="#0067C5" className="m-auto mt-3">
