@@ -27,7 +27,7 @@ export async function getStaticProps() {
       _updatedAt,
       slug,
       "tags":tags[]->title,
-      "state":state->title
+      "status":status->title
     }
     `
   );
