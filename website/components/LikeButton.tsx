@@ -51,7 +51,7 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
     <div className="grid w-60 h-18">
       {hasVoted && (
         <>
-          <button className="text-2xl" onClick={useVote}>
+          <button aria-live="polite" className="text-xl" onClick={useVote}>
             {votes ? likes : 0}
             <LikedSVG className="likedButton mx-auto mt-2 scale-150" />
             <p color="#0067C5" className="m-auto mt-3">

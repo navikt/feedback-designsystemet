@@ -18,7 +18,7 @@ const CardList: React.FC<CardProps> = ({ posts, category, roadmap }) => {
       }
     >
       {posts
-        .filter((post) => post.state == category)
+        .filter((post) => post.status == category)
         .map((post, index) => (
           <Card key={category + " " + index} card={post} />
         ))}

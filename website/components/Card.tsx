@@ -19,7 +19,7 @@ export type ICard = {
   name: string;
   slug: ISlug;
   tags?: string[];
-  state: string;
+  status: string;
   votes: Array<string>;
 };
 

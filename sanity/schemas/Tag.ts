@@ -7,7 +7,7 @@ export default {
       name: "title",
       title: "Title",
       type: "string",
-      validation: Rule => Rule.required().warning('En tag må ha en tittle.')
+      validation: Rule => Rule.required().warning('En tag må ha en tittel.')
     },
   ],
 };
