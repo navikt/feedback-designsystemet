@@ -11,7 +11,8 @@ export default async (
   const email = payload?.preferred_username;
 
   if (!email) {
-    res.send(403);
+    console.log("heihei");
+    res.status(403);
   } else {
     const voteResponse = await client.fetch(
       `*[_type == "post" && _id == $id] {
@@ -26,20 +27,11 @@ export default async (
     const voteList = voteResponse[0].votes;
 
     if (voteList?.includes(email)) {
-      client
-        .patch(req.body.id)
-        // Add the items after the last item in the array (append)
-        .set({ votes: voteList.filter((vote) => vote !== email) })
-        .commit();
+      console.log(res.json);
+      res.status(200).json({ voted: true });
     } else {
-      client
-        .patch(req.body.id)
-        // Ensure that the `reviews` arrays exists before attempting to add items to it
-        .setIfMissing({ votes: [] })
-        // Add the items after the last item in the array (append)
-        .insert("after", "votes[-1]", [email])
-        .commit();
+      console.log(res.json);
+      res.status(200).json({ voted: false });
     }
-    res.send("ok");
   }
 };
