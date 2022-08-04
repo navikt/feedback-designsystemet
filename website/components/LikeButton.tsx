@@ -36,7 +36,7 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
       body: JSON.stringify({ id }),
     }).then(async (res) => {
       const voted = await res.json();
-      sethasVoted(voted);
+      sethasVoted(voted.voted);
     });
   }, [id]);
 
@@ -51,7 +51,7 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
     <div className="grid w-40 h-18">
       {hasVoted && (
         <>
-          <button aria-live="polite" className="text-xl" onClick={useVote}>
+          <button aria-live="polite" className="text-2xl" onClick={useVote}>
             {votes ? likes : 0}
             <LikedSVG className="likedButton mx-auto mt-2 scale-150" />
             <p color="#0067C5" className="m-auto mt-3">
@@ -61,8 +61,13 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
         </>
       )}
       {!hasVoted && (
+<<<<<<< HEAD
         <button aria-live="polite" className="text-2xl" onClick={useVote}>
           {votes ? votes.length : 0}
+=======
+        <button className="text-2xl" onClick={useVote}>
+          {votes ? likes : 0}
+>>>>>>> e2acbea897314f24532623bf28b285a1a2e7f999
           <NotLikedSVG className="mx-auto mt-2 scale-150 fill-black" />
           <p className="m-auto mt-3"> Stem </p>
         </button>
