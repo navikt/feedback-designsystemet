@@ -3,8 +3,6 @@ import NotLikedSVG from "../public/NotLikedSVG";
 import { Loader } from "@navikt/ds-react";
 import { useEffect, useState } from "react";
 import toggleVote from "../lib/hooks/toggleVote";
-import userHasVoted from "../lib/hooks/userHasVoted";
-import { json } from "stream/consumers";
 
 interface IVotingInfo {
   id: string;
