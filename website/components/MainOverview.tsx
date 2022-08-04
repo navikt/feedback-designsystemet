@@ -24,18 +24,18 @@ const MainOverview: React.FC<PostProps> = ({ posts }) => {
       </p>
       <Accordion className="mt-10" color="white">
         <Accordion.Item color="white" defaultOpen={true}>
-          <Divider name="Stem!" />
+          <Divider name="Til avstemning" />
           <Accordion.Header className="flex flex-col border border-none">
-            Her kan du stemme på oppgaver Team Designsystemet skal jobbe med
+            Her kan du stemme fram oppgaver Designsystemet burde priotere
           </Accordion.Header>
           <Accordion.Content color="white" className="border border-none">
             <CardList posts={posts} category="Open" />
           </Accordion.Content>
         </Accordion.Item>
-        <Divider name="Planlagte oppgaver" />
+        <Divider name="Påbegynte oppgaver" />
         <Accordion.Item>
           <Accordion.Header className="flex flex-col">
-            Her kan du stemme på oppgaver Team Designsystemet skal jobbe med
+            Her får du en oversikt over statusen til igangsatte oppgaver
           </Accordion.Header>
           <Accordion.Content>
             <Chrono
@@ -64,10 +64,10 @@ const MainOverview: React.FC<PostProps> = ({ posts }) => {
             </Chrono>
           </Accordion.Content>
         </Accordion.Item>
-        <Divider name="Arkiv" />
+        <Divider name="Lansert" />
         <Accordion.Item>
           <Accordion.Header className="flex flex-col">
-            Her kan du stemme på oppgaver Team Designsystemet skal jobbe med
+            Her får du en oversikt over ferdigstilte oppgaver til Designsystemet
           </Accordion.Header>
           <Accordion.Content>
             <CardList posts={posts} category="Done" />
