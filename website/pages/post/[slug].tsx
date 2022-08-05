@@ -39,7 +39,7 @@ const Post = ({ post }) => {
     <div className="flex flex-col md:max-w-[70vw] min-w-[69vw] min-h-[70vh] mt-20 mb-20 border-2 rounded-md flex-initial mx-auto bg-white max-w-[2200px] p-20">
       <div className="flex flex-row justify-between">
         <a className="border text-text rounded p-2 h-fit" href={"/"}>
-          <div className="flex flex-row place-items-center">
+          <div id="tilbakeKnapp" className="flex flex-row place-items-center">
             <Left /> Tilbake
           </div>
         </a>

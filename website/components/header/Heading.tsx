@@ -42,7 +42,7 @@ const Heading: React.FC = () => {
       </div>
       <div className="flex flex-row">
         <SendFeedback />
-        <Header.User name={user?.name.split(",")[0]} />
+        <Header.User id="username" name={user?.name.split(",")[0]} />
       </div>
     </Header>
   );

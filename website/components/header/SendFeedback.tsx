@@ -8,7 +8,12 @@ const SendFeedback = () => {
 
   return (
     <>
-      <Button variant="primary" size="small" onClick={() => setOpenState(true)}>
+      <Button
+        variant="primary"
+        id="forslagsKnapp"
+        size="small"
+        onClick={() => setOpenState(true)}
+      >
         <Add aria-hidden />
         Send inn forslag
       </Button>
@@ -17,13 +22,14 @@ const SendFeedback = () => {
         aria-label="Send inn forslag"
         onClose={() => setOpenState(false)}
       >
-        <Modal.Content className=" space-y-6">
-          <Heading spacing level="1" size="large">
+        <Modal.Content id="forslagsModal" className="space-y-6">
+          <Heading id="forslagHeading" spacing level="1" size="large">
             Send inn forslag til Designsystemet
           </Heading>
-          <TextField label="Tittel" size="medium" />
-          <Textarea label="Body" />
+          <TextField id="forslagTittel" label="Tittel" size="medium" />
+          <Textarea id="forslagBody" label="Body" />
           <Button
+            id="forslagSendInn"
             variant="primary"
             size="medium"
             onClick={() => setOpenState(false)}
