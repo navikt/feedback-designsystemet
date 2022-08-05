@@ -1,27 +1,7 @@
 import { LikeFilled } from "@navikt/ds-icons";
 import { BodyShort, Heading, Tag } from "@navikt/ds-react";
 import Link from "next/link";
-
-export type ISlug = {
-  _type: String;
-  current: String;
-};
-
-export interface CardProps {
-  card: ICard;
-}
-
-export type ICard = {
-  _updatedAt: string;
-  title: string;
-  shortdescription: Array<string>;
-  description: Array<string>;
-  name: string;
-  slug: ISlug;
-  tags?: string[];
-  status: string;
-  votes: Array<string>;
-};
+import { CardProps } from "../lib/types/types";
 
 const Card: React.FC<CardProps> = ({ card }) => {
   const { title, tags, slug, votes, shortdescription } = card;

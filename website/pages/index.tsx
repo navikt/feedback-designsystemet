@@ -1,15 +1,6 @@
 import client from "../lib/sanity/sanity";
-import { ICard } from "../components/Card";
 import MainOverview from "../components/MainOverview";
-
-export interface PostProps {
-  posts?: ICard[];
-  tags?: Tag[];
-}
-
-export interface Tag {
-  title: String;
-}
+import { PostProps, Tag } from "../lib/types/types";
 
 const Home: React.FC<PostProps> = ({ posts }) => {
   return (

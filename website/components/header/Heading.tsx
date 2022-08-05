@@ -4,13 +4,8 @@ import { Header } from "@navikt/ds-react-internal";
 import { useEffect, useState } from "react";
 import HeaderLogo from "../../public/HeaderLogo";
 import SendFeedback from "./SendFeedback";
+import { IPerson } from "../../lib/types/types";
 
-export interface IPerson {
-  status: number;
-  name: string;
-  mail?: string;
-  ident?: string;
-}
 const Heading: React.FC = () => {
   const [user, setUser] = useState<IPerson>(null);
 

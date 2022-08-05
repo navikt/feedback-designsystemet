@@ -1,6 +1,6 @@
 import { Heading, Tag } from "@navikt/ds-react";
 import client from "../../lib/sanity/sanity";
-import { PortableText, PortableTextBlockComponent } from "@portabletext/react";
+import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import ModalImage from "react-modal-image";
 import LikeButton from "../../components/LikeButton";
