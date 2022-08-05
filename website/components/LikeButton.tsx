@@ -51,7 +51,12 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
     <div className="grid w-40 h-18">
       {hasVoted && (
         <>
-          <button aria-live="polite" className="text-2xl" onClick={useVote}>
+          <button
+            aria-live="polite"
+            id="likerKnapp"
+            className=" text-2xl"
+            onClick={useVote}
+          >
             {votes ? likes : 0}
             <LikedSVG className="likedButton mx-auto mt-2 scale-150" />
             <p color="#0067C5" className="m-auto mt-3">
@@ -61,7 +66,12 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
         </>
       )}
       {!hasVoted && (
-        <button aria-live="polite" className="text-2xl" onClick={useVote}>
+        <button
+          aria-live="polite"
+          id="likerKnapp"
+          className="text-2xl"
+          onClick={useVote}
+        >
           {votes ? votes.length : 0}
           <NotLikedSVG className="mx-auto mt-2 scale-150 fill-black" />
           <p className="m-auto mt-3"> Stem</p>
