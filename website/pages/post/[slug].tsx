@@ -3,20 +3,8 @@ import client from "../../lib/sanity/sanity";
 import { PortableText, PortableTextBlockComponent } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import ModalImage from "react-modal-image";
-import { ISlug } from "../../components/Card";
 import LikeButton from "../../components/LikeButton";
 import { Left } from "@navikt/ds-icons";
-
-interface IPost {
-  title: String;
-  _id: string;
-  name: String;
-  slug: ISlug;
-  textfield: PortableTextBlockComponent;
-  images?: any;
-  tags?: Array<string>;
-  votes?: Array<string>;
-}
 
 const Post = ({ post }) => {
   const {

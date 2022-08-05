@@ -1,6 +1,5 @@
 import client from "../lib/sanity/sanity";
 import { ICard } from "../components/Card";
-import { useState } from "react";
 import MainOverview from "../components/MainOverview";
 
 export interface PostProps {
