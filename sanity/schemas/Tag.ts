@@ -10,4 +10,4 @@ export default {
       validation: Rule => Rule.required().warning('En tag må ha en tittel.')
     },
   ],
-};
+}; 

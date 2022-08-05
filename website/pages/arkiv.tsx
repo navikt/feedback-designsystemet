@@ -1,7 +1,6 @@
 import Divider from "../components/Divider";
 import CardList from "../components/CardList";
 import client from "../lib/sanity/sanity";
-import { ICard } from "../components/Card";
 import { PostProps } from ".";
 import { BodyShort } from "@navikt/ds-react";
 

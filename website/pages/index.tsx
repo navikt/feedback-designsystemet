@@ -13,8 +13,6 @@ export interface Tag {
 }
 
 const Home: React.FC<PostProps> = ({ posts }) => {
-  const [filters, setFilters] = useState<string[]>(null);
-
   return (
     <>
       <MainOverview posts={posts} />

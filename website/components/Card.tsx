@@ -24,7 +24,7 @@ export type ICard = {
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const { title, _updatedAt, tags, slug, votes, shortdescription } = card;
+  const { title, tags, slug, votes, shortdescription } = card;
 
   return (
     <Link href={`/post/${slug.current}`}>

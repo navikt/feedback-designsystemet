@@ -1,6 +1,3 @@
-import { type } from "os";
-import { client } from "../sanity/sanity";
-
 const toggleVote = (id) =>
   fetch(`/api/toggleVote`, {
     method: "POST",

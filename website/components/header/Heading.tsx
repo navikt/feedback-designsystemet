@@ -1,8 +1,6 @@
 import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
 import { Header } from "@navikt/ds-react-internal";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import HeaderLogo from "../../public/HeaderLogo";
 import SendFeedback from "./SendFeedback";
@@ -14,8 +12,6 @@ export interface IPerson {
   ident?: string;
 }
 const Heading: React.FC = () => {
-  const [value, setValue] = useState("forslag");
-  const router = useRouter();
   const [user, setUser] = useState<IPerson>(null);
 
   useEffect(() => {
