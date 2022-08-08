@@ -43,6 +43,11 @@ body {
   }
 }
 
+@media (max-width: 700px) {
+  .timeline-item-title {
+    visibility: hidden !important;
+  }
+}
 .navds-accordion > * {
   background-color: #e5e5e5;
 }
