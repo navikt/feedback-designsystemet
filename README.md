@@ -1,6 +1,6 @@
 # Feedback
 
-Dette er en mono-repo for designsystemets feedback løsning.
+Dette er et mono-repo for designsystemets feedback løsning.
 
 ## Teknologier
 
@@ -20,7 +20,8 @@ Note: Du kjører alle komandoene i rot mappen.
 
 ### Sanity Studio (localhost:3333)
 
-1. `yarn sanity`
+1. `yarn install`
+2. `yarn sanity`
 
 _Note: Du trenger admin tilgang for å logge inn på Sanity Studio. Ta kontakt med Designsystemet dersom dette er ønskelig._
 
