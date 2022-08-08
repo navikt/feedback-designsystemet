@@ -27,7 +27,7 @@ const SendFeedback = () => {
             Send inn forslag til Designsystemet
           </Heading>
           <TextField id="forslagTittel" label="Tittel" size="medium" />
-          <Textarea id="forslagBody" label="Body" />
+          <Textarea id="forslagBody" label="Beskrivelse" />
           <Button
             id="forslagSendInn"
             variant="primary"

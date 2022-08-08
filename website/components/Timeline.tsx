@@ -3,7 +3,7 @@ import Utvikling from "../public/Utvikling";
 import Implementering from "../public/Implementering";
 
 import { Chrono } from "react-chrono";
-import { PostProps } from "../pages";
+import { PostProps } from "../lib/types/types";
 import CardList from "./CardList";
 
 const Timeline: React.FC<PostProps> = ({ posts }) => {
