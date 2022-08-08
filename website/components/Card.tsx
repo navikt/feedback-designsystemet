@@ -7,8 +7,8 @@ const Card: React.FC<CardProps> = ({ card }) => {
   const { title, tags, slug, votes, shortdescription } = card;
 
   return (
-    <Link href={`/post/${slug.current}`}>
-      <li
+    <Link href={`/post/${slug.current}`} passHref>
+      <a
         aria-label={title}
         tabIndex={0}
         className="flex flex-col text-text p-2 h-60  max-w-md min-w-full md:min-w-[28rem] ease-in-out duration-300 
@@ -43,7 +43,7 @@ const Card: React.FC<CardProps> = ({ card }) => {
               ))}
           </div>
         </div>
-      </li>
+      </a>
     </Link>
   );
 };

@@ -3,7 +3,7 @@ import Utvikling from "../public/Utvikling";
 import Implementering from "../public/Implementering";
 
 import { Chrono } from "react-chrono";
-import { PostProps } from "../pages";
+import { PostProps } from "../lib/types/types";
 import CardList from "./CardList";
 
 const Timeline: React.FC<PostProps> = ({ posts }) => {
@@ -20,6 +20,7 @@ const Timeline: React.FC<PostProps> = ({ posts }) => {
         timelineCircleDimension={35}
         activeItemIndex={-1}
         disableClickOnCircle={true}
+        disableNavOnKey={true}
         hideControls={true}
         theme={{
           primary: "#005B82",

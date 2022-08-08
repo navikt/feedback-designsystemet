@@ -1,5 +1,5 @@
 import { Accordion } from "@navikt/ds-react";
-import { PostProps } from "../pages";
+import { PostProps } from "../lib/types/types";
 import CardList from "./CardList";
 import Divider from "./Divider";
 import Timeline from "./Timeline";
