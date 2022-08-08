@@ -1,17 +1,17 @@
 # Feedback
 
-Dette er et mono-repo for designsystemets feedback løsning.
+Dette er et mono-repo for Designsystemets tilbakemeldingsløsning.
 
 ## Teknologier
 
 - React-Next.js
 - [Sanity](https://www.sanity.io "Sanity") (CMS)
-- Typescript
+- TypeScript
 
 ## Kjøring lokalt
 
 Slik kjører du prosjektet lokalt.
-Note: Du kjører alle komandoene i rot mappen.
+Note: Du kjører alle kommandoene i rot-mappen.
 
 ### Frontend (localhost:3000)
 
