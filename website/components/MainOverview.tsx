@@ -20,7 +20,7 @@ const MainOverview: React.FC<PostProps> = ({ posts }) => {
             Her kan du stemme fram oppgaver du syntes er viktige å prioritere
           </Accordion.Header>
           <Accordion.Content color="white" className="border border-none">
-            <CardList posts={posts} category="Open" />
+            <CardList posts={posts} category="Åpen" />
           </Accordion.Content>
         </Accordion.Item>
         <Divider name="Påbegynte oppgaver" />
@@ -38,7 +38,7 @@ const MainOverview: React.FC<PostProps> = ({ posts }) => {
             Her får du en oversikt over lanserte oppgaver
           </Accordion.Header>
           <Accordion.Content>
-            <CardList posts={posts} category="Done" />
+            <CardList posts={posts} category="Ferdig" />
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>

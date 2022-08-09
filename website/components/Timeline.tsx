@@ -37,9 +37,9 @@ const Timeline: React.FC<PostProps> = ({ posts }) => {
           <Utvikling />
           <Implementering />
         </div>
-        <CardList roadmap={true} posts={posts} category="In Progress" />
-        <CardList roadmap={true} posts={posts} category="Done" />
-        <CardList roadmap={true} posts={posts} category="Open" />
+        <CardList roadmap={true} posts={posts} category="Planlegges" />
+        <CardList roadmap={true} posts={posts} category="Utvikles" />
+        <CardList roadmap={true} posts={posts} category="Implementeres" />
       </Chrono>
     </div>
   );
