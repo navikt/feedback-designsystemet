@@ -30,10 +30,24 @@ This is because Tailwind automatically removes all styling to these elements in 
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
   background-color: #e5e5e5;
+  height: 100%;
+  margin: 0 auto;
 }
 
+@media (max-width: 600px) {
+  body {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 700px) {
+  .timeline-item-title {
+    visibility: hidden !important;
+  }
+}
 .navds-accordion > * {
   background-color: #e5e5e5;
 }

@@ -1,21 +1,10 @@
 import { Heading, Tag } from "@navikt/ds-react";
 import client from "../../lib/sanity/sanity";
-import { PortableText, PortableTextBlockComponent } from "@portabletext/react";
+import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import ModalImage from "react-modal-image";
-import { ISlug } from "../../components/Card";
 import LikeButton from "../../components/LikeButton";
-
-interface IPost {
-  title: String;
-  _id: string;
-  name: String;
-  slug: ISlug;
-  textfield: PortableTextBlockComponent;
-  images?: any;
-  tags?: Array<string>;
-  votes?: Array<string>;
-}
+import { Left } from "@navikt/ds-icons";
 
 const Post = ({ post }) => {
   const {
@@ -23,6 +12,7 @@ const Post = ({ post }) => {
     title = "missing title",
     description = ["missing description"],
     images = null,
+    figma = "",
     tags = null,
     votes = [],
   } = post;
@@ -34,12 +24,16 @@ const Post = ({ post }) => {
   }
 
   return (
-    <div className="flex flex-col flex-initial mx-auto px-20 max-w-[2200px] pt-10">
+    <div className="flex flex-col md:max-w-[70vw] min-w-[69vw] min-h-[70vh] mt-20 mb-20 border-2 rounded-md flex-initial mx-auto bg-white max-w-[2200px] p-20">
       <div className="flex flex-row justify-between">
-        <a href={"/"}>{"< Tilbake"}</a>
+        <a className="border text-text rounded p-2 h-fit" href={"/"}>
+          <div id="tilbakeKnapp" className="flex flex-row place-items-center">
+            <Left /> Tilbake
+          </div>
+        </a>
         <LikeButton votes={post.votes} id={post._id} />
       </div>
-      <div className="pt-5 pb-4 space-x-1">
+      <div className="pt-20 pb-4 space-x-1">
         {tags &&
           tags.length > 0 &&
           tags.map((tag, index) => (
@@ -66,22 +60,21 @@ const Post = ({ post }) => {
             />
           ))}
       </div>
+      <div>
+        {figma && (
+          <iframe
+            src={figma}
+            title="Embedded Figma prototype"
+            width="100%"
+            height="800"
+          ></iframe>
+        )}
+      </div>
     </div>
   );
 };
 
-export async function getStaticPaths() {
-  const paths = await client.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
-  );
-
-  return {
-    paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
   const post = await client.fetch(
@@ -91,6 +84,7 @@ export async function getStaticProps(context) {
       title,
       slug,
       images,
+      figma,
       description,
       "tags": tags[]->title,
       votes,

@@ -1,12 +1,7 @@
-import Card, { ICard } from "../components/Card";
+import Card from "../components/Card";
+import { CardListProps } from "../lib/types/types";
 
-export interface CardProps {
-  posts: ICard[];
-  category?: String;
-  roadmap?: boolean;
-}
-
-const CardList: React.FC<CardProps> = ({ posts, category, roadmap }) => {
+const CardList: React.FC<CardListProps> = ({ posts, category, roadmap }) => {
   if (!posts) return <p className="m-auto mt-60">Ingen aktive kort</p>;
 
   return (
@@ -18,9 +13,11 @@ const CardList: React.FC<CardProps> = ({ posts, category, roadmap }) => {
       }
     >
       {posts
-        .filter((post) => post.state == category)
+        .filter((post) => post.status == category)
         .map((post, index) => (
-          <Card key={category + " " + index} card={post} />
+          <li key={index}>
+            <Card key={category + " " + index} card={post} />
+          </li>
         ))}
     </ul>
   );

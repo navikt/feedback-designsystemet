@@ -1,38 +1,18 @@
 import { LikeFilled } from "@navikt/ds-icons";
 import { BodyShort, Heading, Tag } from "@navikt/ds-react";
 import Link from "next/link";
-
-export type ISlug = {
-  _type: String;
-  current: String;
-};
-
-export interface CardProps {
-  card: ICard;
-}
-
-export type ICard = {
-  _updatedAt: string;
-  title: string;
-  shortdescription: Array<string>;
-  description: Array<string>;
-  name: string;
-  slug: ISlug;
-  tags?: string[];
-  state: string;
-  votes: Array<string>;
-};
+import { CardProps } from "../lib/types/types";
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const { title, _updatedAt, tags, slug, votes, shortdescription } = card;
+  const { title, tags, slug, votes, shortdescription } = card;
 
   return (
-    <Link href={`/post/${slug.current}`}>
-      <li
+    <Link href={`/post/${slug.current}`} passHref>
+      <a
         aria-label={title}
         tabIndex={0}
-        className="flex flex-col text-text p-2 md:h-60 h-40 max-w-md min-w-[28rem] ease-in-out duration-300 
-        hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle 
+        className="flex flex-col text-text p-2 h-60  max-w-md min-w-full md:min-w-[28rem] ease-in-out duration-300 
+        hover:scale-[1.02] hover:bg-interaction-primary-hover-subtle focus:scale-[1.02] focus:bg-interaction-primary-hover-subtle 
         shadow-xl border border-gray-400 rounded-lg cursor-pointer mx-auto m-2 bg-canvas-background-light"
       >
         <Heading className="text-center" spacing level="2" size="medium">
@@ -63,7 +43,7 @@ const Card: React.FC<CardProps> = ({ card }) => {
               ))}
           </div>
         </div>
-      </li>
+      </a>
     </Link>
   );
 };

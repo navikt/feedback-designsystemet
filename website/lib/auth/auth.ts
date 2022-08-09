@@ -1,5 +1,4 @@
 import { GetServerSidePropsContext, NextApiRequest } from "next";
-/* import { isDevelopment } from ".."; */
 import { tokenIsValid } from "./verifyToken";
 
 export function getBearerToken(req) {

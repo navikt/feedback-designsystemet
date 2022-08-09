@@ -1,76 +1,44 @@
 import { Accordion } from "@navikt/ds-react";
-import { Chrono } from "react-chrono";
-import { PostProps } from "../pages";
+import { PostProps } from "../lib/types/types";
 import CardList from "./CardList";
 import Divider from "./Divider";
-import Planlegging from "../public/Planlegging";
-import Utvikling from "../public/Utvikling";
-import Implementering from "../public/Implementering";
+import Timeline from "./Timeline";
 
 const MainOverview: React.FC<PostProps> = ({ posts }) => {
-  const items = [
-    {
-      title: "Planlegges",
-    },
-    { title: "Utvikles" },
-    { title: "Implementeres" },
-  ];
   return (
     <div className="max-w-[2200px] mx-auto">
-      <p className="mt-20 mx-[20rem] text-left">
-        {
-          "Did you hear that? They've shut down the main reactor. We'll be destroyed for sure. This is madness! We're doomed! There'll be no escape for the Princess this time. What's that? Artoo! Artoo-Detoo, where are you? At last! Where have you been? They're heading in this direction. And where you come from. I saw part of the message he was. I seem to have found it. General Kenobi, years ago you served my father in the Clone."
-        }
+      <p id="infoText" className="mt-20 mx-[5rem] lg:mx-[20rem] text-center">
+        Velkommen til Team Designsystemets feedbacksystem! Her legger vi ut
+        potensielle funksjonaliteter som skal jobbes med i fremtiden, og gir deg
+        en oversikt over fremgangen på påbegynte oppgaver. Hvert kort kan
+        stemmes på, og gir oss innsikt i hva det er størst behov for.
       </p>
-      <Accordion className="mt-10" color="white">
+      <Accordion id="NAVaccordion" className="mt-10" color="white">
         <Accordion.Item color="white" defaultOpen={true}>
-          <Divider name="Stem!" />
+          <Divider name="Til avstemning" />
           <Accordion.Header className="flex flex-col border border-none">
-            Her kan du stemme på oppgaver Team Designsystemet skal jobbe med
+            Her kan du stemme fram oppgaver du syntes er viktige å prioritere
           </Accordion.Header>
           <Accordion.Content color="white" className="border border-none">
-            <CardList posts={posts} category="Open" />
+            <CardList posts={posts} category="Åpen" />
           </Accordion.Content>
         </Accordion.Item>
-        <Divider name="Planlagte oppgaver" />
-        <Accordion.Item>
+        <Divider name="Påbegynte oppgaver" />
+        <Accordion.Item id="oppgaver">
           <Accordion.Header className="flex flex-col">
-            Her kan du stemme på oppgaver Team Designsystemet skal jobbe med
+            Her får du en oversikt over fremgangen til påbegynte oppgaver
           </Accordion.Header>
           <Accordion.Content>
-            <Chrono
-              timelineCircleDimension={35}
-              activeItemIndex={-1}
-              disableClickOnCircle={true}
-              hideControls={true}
-              theme={{
-                primary: "#005B82",
-                secondary: "#e5e5e5",
-                cardBgColor: "#CFCFCF",
-              }}
-              mode="VERTICAL"
-              items={items}
-              focusActiveItemOnLoad={false}
-              allowDynamicUpdate={true}
-            >
-              <div className="chrono-icons">
-                <Planlegging />
-                <Utvikling />
-                <Implementering />
-              </div>
-              <CardList roadmap={true} posts={posts} category="In Progress" />
-              <CardList roadmap={true} posts={posts} category="Done" />
-              <CardList roadmap={true} posts={posts} category="Open" />
-            </Chrono>
+            <Timeline posts={posts} />
           </Accordion.Content>
         </Accordion.Item>
-        <Divider name="Arkiv" />
-        <Accordion.Item>
+        <Divider name="Lansert" />
+        <Accordion.Item id="ferdigstilte">
           <Accordion.Header className="flex flex-col">
-            Her kan du stemme på oppgaver Team Designsystemet skal jobbe med
+            Her får du en oversikt over lanserte oppgaver
           </Accordion.Header>
           <Accordion.Content>
-            <CardList posts={posts} category="Done" />
+            <CardList posts={posts} category="Ferdig" />
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>

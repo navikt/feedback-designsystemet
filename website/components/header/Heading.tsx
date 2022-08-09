@@ -1,20 +1,12 @@
 import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
 import { Header } from "@navikt/ds-react-internal";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import HeaderLogo from "../../public/HeaderLogo";
+import SendFeedback from "./SendFeedback";
+import { IPerson } from "../../lib/types/types";
 
-export interface IPerson {
-  status: number;
-  name: string;
-  mail?: string;
-  ident?: string;
-}
 const Heading: React.FC = () => {
-  const [value, setValue] = useState("forslag");
-  const router = useRouter();
   const [user, setUser] = useState<IPerson>(null);
 
   useEffect(() => {
@@ -36,10 +28,13 @@ const Heading: React.FC = () => {
   return (
     <Header className="flex justify-between">
       <div className="ml-3 flex flex-row">
-        <HeaderLogo />
+        <HeaderLogo aria-hidden />
         <Header.Title>Feedback</Header.Title>
       </div>
-      <Header.User name={user?.name.split(",")[0]} />
+      <div className="flex flex-row">
+        <SendFeedback />
+        <Header.User id="username" name={user?.name.split(",")[0]} />
+      </div>
     </Header>
   );
 };

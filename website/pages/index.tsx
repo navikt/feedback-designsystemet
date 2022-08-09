@@ -1,20 +1,8 @@
 import client from "../lib/sanity/sanity";
-import { ICard } from "../components/Card";
-import { useState } from "react";
 import MainOverview from "../components/MainOverview";
-
-export interface PostProps {
-  posts?: ICard[];
-  tags?: Tag[];
-}
-
-export interface Tag {
-  title: String;
-}
+import { PostProps, Tag } from "../lib/types/types";
 
 const Home: React.FC<PostProps> = ({ posts }) => {
-  const [filters, setFilters] = useState<string[]>(null);
-
   return (
     <>
       <MainOverview posts={posts} />
@@ -33,7 +21,7 @@ export async function getServerSideProps() {
       slug,
       votes,
       "tags":tags[]->title,
-      "state":state->title
+      "status":status->title
     }
     `
   );

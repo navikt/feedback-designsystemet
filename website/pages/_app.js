@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import "../components/header/Heading.css";
 import Heading from "../components/header/Heading";
 import Head from "next/head";
 import { AuthProvider } from "../lib/auth/authprovider";
@@ -20,7 +19,9 @@ export default function MyApp({ Component, pageProps }) {
               <meta property="og:image" content="/public/favicon.ico" />
             </Head>
             <Heading />
-            <Component {...pageProps} />
+            <main>
+              <Component {...pageProps} />
+            </main>
           </div>
         </ThemeProvider>
       </QueryClientProvider>
