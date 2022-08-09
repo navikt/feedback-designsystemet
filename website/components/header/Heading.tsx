@@ -21,7 +21,7 @@ const Heading: React.FC = () => {
   return (
     <Header className="flex justify-between">
       <div className="ml-3 flex flex-row">
-        <HeaderLogo />
+        <HeaderLogo aria-hidden />
         <Header.Title>Feedback</Header.Title>
       </div>
       <div className="flex flex-row">

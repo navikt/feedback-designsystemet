@@ -6,7 +6,7 @@ export default {
     {
       name: "title",
       type: "string",
-      title: "Title",
+      title: "Tittel",
       validation: (Rule) => [
         Rule.required().error("Det må settes en tittel."),
         Rule.max(30).warning("Hold tittelen kort og konsis."),
@@ -28,10 +28,10 @@ export default {
     {
       name: "shortdescription",
       type: "string",
-      title: "Short description",
+      title: "Kort beskrivelse",
       validation: (Rule) => [
         Rule.required().error("Det må settes en kort beskrivelse."),
-        Rule.min(50).warning(
+        Rule.max(200).warning(
           "Prøv å hold beskrivelsen kort, men gi nok informasjon til at brukerne fortstår hva kortet omhandler."
         ),
       ],
@@ -39,7 +39,7 @@ export default {
     {
       name: "description",
       type: "array",
-      title: "Description",
+      title: "Beskrivelse",
       of: [{ type: "block" }],
       validation: (Rule) =>
         Rule.required()
@@ -49,17 +49,17 @@ export default {
     {
       name: "images",
       type: "array",
-      title: "Images",
+      title: "Bilder",
       of: [
         {
           name: "image",
           type: "image",
-          title: "Image",
+          title: "Bilde",
           fields: [
             {
               name: "alt",
               type: "string",
-              title: "Alternative text",
+              title: "Alternativ tekst",
             },
           ],
         },
@@ -77,7 +77,7 @@ export default {
     {
       name: "date",
       type: "datetime",
-      title: "Date",
+      title: "Dato",
       options: {
         dateFormat: "DD-MM-YYYY",
       },
@@ -90,17 +90,17 @@ export default {
       validation: (Rule) => Rule.required().error("Det må settes en status."),
     },
     {
-      title: "Tags",
       name: "tags",
       type: "array",
+      title: "Tags",
       of: [{ type: "reference", to: { type: "tag" } }],
       validation: (Rule) =>
         Rule.required().warning("Det bør velges minst en tag."),
     },
     {
-      title: "Votes",
       name: "votes",
       type: "array",
+      title: "Stemmer",
       of: [{ type: "string" }],
     },
   ],

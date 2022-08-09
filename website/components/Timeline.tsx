@@ -20,6 +20,7 @@ const Timeline: React.FC<PostProps> = ({ posts }) => {
         timelineCircleDimension={35}
         activeItemIndex={-1}
         disableClickOnCircle={true}
+        disableNavOnKey={true}
         hideControls={true}
         theme={{
           primary: "#005B82",
@@ -36,9 +37,9 @@ const Timeline: React.FC<PostProps> = ({ posts }) => {
           <Utvikling />
           <Implementering />
         </div>
-        <CardList roadmap={true} posts={posts} category="In Progress" />
-        <CardList roadmap={true} posts={posts} category="Done" />
-        <CardList roadmap={true} posts={posts} category="Open" />
+        <CardList roadmap={true} posts={posts} category="Planlegges" />
+        <CardList roadmap={true} posts={posts} category="Utvikles" />
+        <CardList roadmap={true} posts={posts} category="Implementeres" />
       </Chrono>
     </div>
   );
