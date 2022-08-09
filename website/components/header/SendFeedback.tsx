@@ -26,8 +26,17 @@ const SendFeedback = () => {
           <Heading id="forslagHeading" spacing level="1" size="large">
             Send inn forslag til Designsystemet
           </Heading>
-          <TextField id="forslagTittel" label="Tittel" size="medium" />
-          <Textarea id="forslagBody" label="Beskrivelse" />
+          <TextField
+            id="forslagTittel"
+            label="Tittel"
+            description="En tittle som kort oppsumerer forslaget du skal sende inn"
+            size="medium"
+          />
+          <Textarea
+            id="forslagBody"
+            label="Beskrivelse"
+            description="Hva har du lyst til å dele med oss?"
+          />
           <Button
             id="forslagSendInn"
             variant="primary"
