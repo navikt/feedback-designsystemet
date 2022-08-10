@@ -29,7 +29,7 @@ const SendFeedback = () => {
           <TextField
             id="forslagTittel"
             label="Tittel"
-            description="En tittle som kort oppsumerer forslaget du skal sende inn"
+            description="En tittel som kort oppsummerer forslaget du skal sende inn"
             size="medium"
           />
           <Textarea
