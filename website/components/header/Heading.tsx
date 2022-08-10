@@ -14,13 +14,6 @@ const Heading: React.FC = () => {
       const json = await res.json();
       if (json?.status === 200) {
         setUser(json);
-      } else {
-        setUser({
-          status: 200,
-          name: "Lokalesen, Lokal",
-          mail: "lokal@nav.no",
-          ident: "H12456",
-        });
       }
     });
   }, []);

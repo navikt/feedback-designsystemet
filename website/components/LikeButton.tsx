@@ -25,7 +25,7 @@ const LikeButton: React.FC<IVotingInfo> = ({ id, votes }) => {
       toggleVote(id);
       sethasVoted(!hasVoted);
       setLoading(false);
-    }, 700);
+    }, 1000);
     return () => clearTimeout(timer);
   };
 

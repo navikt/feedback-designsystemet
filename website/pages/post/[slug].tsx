@@ -67,6 +67,7 @@ const Post = ({ post }) => {
             title="Embedded Figma prototype"
             width="100%"
             height="800"
+            className="border"
           ></iframe>
         )}
       </div>

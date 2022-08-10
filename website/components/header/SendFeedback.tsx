@@ -21,6 +21,7 @@ const SendFeedback = () => {
         open={openState}
         aria-label="Send inn forslag"
         onClose={() => setOpenState(false)}
+        className="p-10"
       >
         <Modal.Content id="forslagsModal" className="space-y-6">
           <Heading id="forslagHeading" spacing level="1" size="large">
